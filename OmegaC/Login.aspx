@@ -14,7 +14,7 @@
     
     </div>
         <p>
-            EmployeeID&nbsp;&nbsp;&nbsp;
+            UserName &nbsp;&nbsp;&nbsp;
             <asp:TextBox ID="txtEmployeeID" runat="server"></asp:TextBox>
         </p>
         <p>

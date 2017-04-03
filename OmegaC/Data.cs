@@ -10,12 +10,12 @@ namespace OmegaC
     {
         public static string GetConnectionString()
         {
-            return ConfigurationManager.ConnectionStrings["OmegaWindConnectionString"].ConnectionString;
+            return ConfigurationManager.ConnectionStrings["OmegaUsersConnectionString"].ConnectionString;
         }
 
         public static string GetConnectionString(string connectionStringName)
         {
-            return ConfigurationManager.ConnectionStrings[connectionStringName].ConnectionString;
+            return ConfigurationManager.ConnectionStrings["OmegaWindConnectionString"].ConnectionString;
         }
     }
 }

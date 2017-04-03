@@ -20,10 +20,10 @@ namespace OmegaC
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
-            string employeeID = txtEmployeeID.Text.Trim();
+            string username = txtEmployeeID.Text.Trim();
             string password = txtPassWord.Text.Trim();
 
-            if (AuthenticateUser(employeeID, password))
+            if (AuthenticateUser(username, password))
             {
                 lblMessage.Text = "Login success";
                 lblMessage.ForeColor = Color.Green;
@@ -35,7 +35,7 @@ namespace OmegaC
             }
         }
 
-        private bool AuthenticateUser(string employeeID, string password)
+        private bool AuthenticateUser(string username, string password)
         {          
            
             int result = 0;
@@ -45,7 +45,7 @@ namespace OmegaC
                
                 SqlCommand cmd = new SqlCommand("spAuthenticateUser", conn);               
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@employeeID", employeeID);
+                cmd.Parameters.AddWithValue("@username", username);
                 cmd.Parameters.AddWithValue("@Password", password);
 
                 conn.Open();
