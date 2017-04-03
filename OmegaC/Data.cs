@@ -1,17 +1,21 @@
 ﻿using System;
-using System.Threading.Tasks;
-using Microsoft.Owin;
-using Owin;
-
-[assembly: OwinStartup(typeof(OmegaC.Data))]
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Configuration;
 
 namespace OmegaC
 {
     public class Data
     {
-        public void Configuration(IAppBuilder app)
+        public static string GetConnectionString()
         {
-            // For more information on how to configure your application, visit http://go.microsoft.com/fwlink/?LinkID=316888
+            return ConfigurationManager.ConnectionStrings["OmegaWindConnectionString"].ConnectionString;
+        }
+
+        public static string GetConnectionString(string connectionStringName)
+        {
+            return ConfigurationManager.ConnectionStrings[connectionStringName].ConnectionString;
         }
     }
 }
