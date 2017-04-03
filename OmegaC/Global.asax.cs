@@ -17,7 +17,7 @@ namespace OmegaC
 
         protected void Session_Start(object sender, EventArgs e)
         {
-            Session["TestValue"] = 0;
+         
         }
 
         protected void Application_BeginRequest(object sender, EventArgs e)

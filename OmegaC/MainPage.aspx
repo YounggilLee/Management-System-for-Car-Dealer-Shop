@@ -10,6 +10,9 @@
     <form id="form1" runat="server">
     <div>
     
+        <asp:Label ID="lblLoginUser" runat="server"></asp:Label>
+        <asp:Label ID="lblMessage" runat="server"></asp:Label>
+    
     </div>
     </form>
 </body>

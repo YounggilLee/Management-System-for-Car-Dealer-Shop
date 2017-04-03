@@ -27,6 +27,10 @@ namespace OmegaC
             {
                 lblMessage.Text = "Login success";
                 lblMessage.ForeColor = Color.Green;
+
+                Session["userName"] = username;
+              
+                Response.Redirect("~/MainPage.aspx");
             }
             else
             {
