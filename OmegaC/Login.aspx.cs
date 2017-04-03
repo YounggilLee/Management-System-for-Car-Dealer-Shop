@@ -20,7 +20,7 @@ namespace OmegaC
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
-            string username = txtEmployeeID.Text.Trim();
+            string username = txtUserName.Text.Trim();
             string password = txtPassWord.Text.Trim();
 
             if (AuthenticateUser(username, password))
@@ -64,5 +64,9 @@ namespace OmegaC
 
         }
 
+        protected void txtCreateUser_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/CreateUser.aspx");
+        }
     }
 }
