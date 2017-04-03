@@ -36,27 +36,28 @@ namespace OmegaC
         }
 
         private bool AuthenticateUser(string employeeID, string password)
-        {
+        {          
            
-            string query = "SELECT employeeID, password FROM employee WHERE employeeID = @employeeID AND password = @password;";
             int result = 0;
 
             using (SqlConnection conn = new SqlConnection(cs))
             {
-                
-                SqlCommand cmd = new SqlCommand(query, conn);              
-
+               
+                SqlCommand cmd = new SqlCommand("spAuthenticateUser", conn);               
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@employeeID", employeeID);
                 cmd.Parameters.AddWithValue("@Password", password);
-                conn.Open();
 
+                conn.Open();
                 result = (int)cmd.ExecuteScalar();
+               
             }
 
             if (result == 1)
                 return true;
             else
                 return false;
+
         }
 
     }
