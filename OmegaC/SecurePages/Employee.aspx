@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="MainPage.aspx.cs" Inherits="OmegaC.MainPage" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Employee.aspx.cs" Inherits="OmegaC.SecurePages.Employee" %>
 
 <%@ Register src="../UserControls/HeaderUserControl.ascx" tagname="HeaderUserControl" tagprefix="uc1" %>
 
@@ -12,9 +12,6 @@
     <form id="form1" runat="server">
         <uc1:HeaderUserControl ID="HeaderUserControl1" runat="server" />
     <div>
-    
-        <asp:Label ID="lblLoginUser" runat="server"></asp:Label>
-        <asp:Label ID="lblMessage" runat="server"></asp:Label>
     
     </div>
     </form>

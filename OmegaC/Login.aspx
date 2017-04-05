@@ -23,7 +23,6 @@
     <form id="form1" runat="server">
     <div>
     
-        <h3></h3>
         <uc1:HeaderUserControl ID="HeaderUserControl1" runat="server" />
         <h3>Login</h3>
     

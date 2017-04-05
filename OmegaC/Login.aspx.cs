@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Web;
+using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -21,20 +22,19 @@ namespace OmegaC
         protected void btnLogin_Click(object sender, EventArgs e)
         {
             string username = txtUserName.Text.Trim();
-            string password = txtPassWord.Text.Trim();
+           // string password = txtPassWord.Text.Trim();
 
-           //string password = Encryptor.EncryptText(txtPassword.Text.Trim());
+           string password = Encryptor.EncryptText(txtPassWord.Text.Trim());
 
             if (AuthenticateUser(username, password))
             {
-                //FormsAuthentication.RedirectFromLoginPage(username, false);
+                FormsAuthentication.RedirectFromLoginPage(username, false);
 
                 lblMessage.Text = "Login success";
                 lblMessage.ForeColor = Color.Green;
 
-                Session["userName"] = username;
-              
-                Response.Redirect("~/SecurePages/MainPage.aspx");
+                Session["userName"] = username;              
+               
             }
             else
             {

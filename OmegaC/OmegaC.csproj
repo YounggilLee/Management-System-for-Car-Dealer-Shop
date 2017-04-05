@@ -81,8 +81,14 @@
     <Content Include="Default.aspx" />
     <Content Include="Register.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="SecurePages\Customer.aspx" />
+    <Content Include="SecurePages\Employee.aspx" />
+    <Content Include="SecurePages\Invoice.aspx" />
     <Content Include="SecurePages\MainPage.aspx" />
     <Content Include="packages.config" />
+    <Content Include="SecurePages\Option.aspx" />
+    <Content Include="SecurePages\RepairService.aspx" />
+    <Content Include="SecurePages\Vehicle.aspx" />
     <Content Include="SiteMater.Master" />
     <Content Include="UserControls\HeaderUserControl.ascx" />
     <Content Include="WebForm1.aspx" />
@@ -111,6 +117,7 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Encryptor.cs" />
     <Compile Include="Register.aspx.cs">
       <DependentUpon>Register.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -129,6 +136,27 @@
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="SecurePages\Customer.aspx.cs">
+      <DependentUpon>Customer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SecurePages\Customer.aspx.designer.cs">
+      <DependentUpon>Customer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SecurePages\Employee.aspx.cs">
+      <DependentUpon>Employee.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SecurePages\Employee.aspx.designer.cs">
+      <DependentUpon>Employee.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SecurePages\Invoice.aspx.cs">
+      <DependentUpon>Invoice.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SecurePages\Invoice.aspx.designer.cs">
+      <DependentUpon>Invoice.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SecurePages\MainPage.aspx.cs">
       <DependentUpon>MainPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -137,6 +165,27 @@
       <DependentUpon>MainPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SecurePages\Option.aspx.cs">
+      <DependentUpon>Option.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SecurePages\Option.aspx.designer.cs">
+      <DependentUpon>Option.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SecurePages\RepairService.aspx.cs">
+      <DependentUpon>RepairService.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SecurePages\RepairService.aspx.designer.cs">
+      <DependentUpon>RepairService.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SecurePages\Vehicle.aspx.cs">
+      <DependentUpon>Vehicle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SecurePages\Vehicle.aspx.designer.cs">
+      <DependentUpon>Vehicle.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SiteMater.Master.cs">
       <DependentUpon>SiteMater.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

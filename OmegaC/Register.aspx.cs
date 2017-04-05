@@ -23,7 +23,8 @@ namespace OmegaC
         {
             lblMessage.ForeColor = Color.Red;
             string username = txtUserName.Text.Trim();
-            string password = txtPassWord.Text.Trim();
+            string password = Encryptor.EncryptText(txtPassWord.Text.Trim());
+            //string password = txtPassWord.Text.Trim();
 
             if (UserExists(username))
             {

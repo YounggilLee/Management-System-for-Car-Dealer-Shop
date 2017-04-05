@@ -9,9 +9,15 @@
     <DynamicSelectedStyle BackColor="#FFCC66" />
     <Items>
         <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Home" Value="Home"></asp:MenuItem>
+        <asp:MenuItem NavigateUrl="~/SecurePages/MainPage.aspx" Text="MainPage" Value="MainPage"></asp:MenuItem>
+        <asp:MenuItem NavigateUrl="~/SecurePages/Vehicle.aspx" Text="Vehicle" Value="Vehicle"></asp:MenuItem>
+        <asp:MenuItem NavigateUrl="~/SecurePages/Option.aspx" Text="Option" Value="Option"></asp:MenuItem>
+        <asp:MenuItem NavigateUrl="~/SecurePages/Invoice.aspx" Text="Invoice" Value="Invoice"></asp:MenuItem>
+        <asp:MenuItem NavigateUrl="~/SecurePages/RepairService.aspx" Text="RepairService" Value="RepairService"></asp:MenuItem>
+        <asp:MenuItem NavigateUrl="~/SecurePages/Customer.aspx" Text="Customer" Value="Customer"></asp:MenuItem>
+        <asp:MenuItem NavigateUrl="~/SecurePages/Customer.aspx" Text="Employee" Value="Employee"></asp:MenuItem>
         <asp:MenuItem NavigateUrl="~/Register.aspx" Text="Register" Value="Register"></asp:MenuItem>
         <asp:MenuItem NavigateUrl="~/Login.aspx" Text="Login" Value="Login"></asp:MenuItem>
-        <asp:MenuItem NavigateUrl="~/SecurePages/MainPage.aspx" Text="MainPage" Value="MainPage"></asp:MenuItem>
     </Items>
     <StaticHoverStyle BackColor="#990000" ForeColor="White" />
     <StaticMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
