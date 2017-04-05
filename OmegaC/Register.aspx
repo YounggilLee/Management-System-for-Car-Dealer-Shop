@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="CreateUser.aspx.cs" Inherits="OmegaC.CreateUser" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Register.aspx.cs" Inherits="OmegaC.CreateUser" %><%@ Register src="UserControls/HeaderUserControl.ascx" tagname="HeaderUserControl" tagprefix="uc1" %>
 
 <!DOCTYPE html>
 
@@ -19,7 +19,9 @@
     <form id="form1" runat="server">
     <div>
     
-        <h3>Create User Page</h3>
+        <h3></h3>
+        <uc1:HeaderUserControl ID="HeaderUserControl1" runat="server" />
+        <h3>Register Page</h3>
     
     </div>
 &nbsp;<table class="auto-style1" style="width: auto; margin: auto;">
@@ -57,7 +59,7 @@
             </tr>
             <tr>
                 <td>
-        <asp:Button ID="btnCreateUser" runat="server" OnClick="btnCreateUser_Click" Text="Create" />
+        <asp:Button ID="btnCreateUser" runat="server" OnClick="btnCreateUser_Click" Text="Register" />
                 </td>
                 <td>
         <asp:Button ID="btnBack" runat="server" CausesValidation="False" Text="Back" OnClick="btnBack_Click" />

@@ -9,10 +9,10 @@ namespace OmegaC
 {
     public partial class SiteMater : System.Web.UI.MasterPage
     {
-        public string TextBoxOnMasterPage
-        {
-            get { return txtMasterPageTextBox.Text; }
-        }
+        //public string TextBoxOnMasterPage
+        //{
+        //    get { return txtMasterPageTextBox.Text; }
+        //}
 
         public string LabelOnMasterPage
         {
@@ -24,9 +24,9 @@ namespace OmegaC
 
         }
 
-        protected void btnOk_Click(object sender, EventArgs e)
-        {
+        //protected void btnOk_Click(object sender, EventArgs e)
+        //{
 
-        }
+        //}
     }
 }

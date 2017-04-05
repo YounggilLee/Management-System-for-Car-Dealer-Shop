@@ -30,7 +30,7 @@ namespace OmegaC
 
                 Session["userName"] = username;
               
-                Response.Redirect("~/MainPage.aspx");
+                Response.Redirect("~/SecurePages/MainPage.aspx");
             }
             else
             {

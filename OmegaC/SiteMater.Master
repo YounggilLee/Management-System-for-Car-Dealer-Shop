@@ -10,13 +10,12 @@
 <body>
     <form id="form1" runat="server">
     <div id="Wrapper">
-        <header>Header</header>
+        <header>Header<br />
+        </header>
 
         <aside>Sidebar<br />
             <br />
-            <asp:TextBox ID="txtMasterPageTextBox" runat="server"></asp:TextBox>
-&nbsp;<asp:Button ID="btnOk" runat="server" OnClick="btnOk_Click" Text="OK" />
-            <br />
+&nbsp;<br />
             <br />
             <br />
             Text coming from Content Page:<br />

@@ -22,6 +22,15 @@ namespace OmegaC {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
+        /// HeaderUserControl1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::OmegaC.UserControls.HeaderUserControl HeaderUserControl1;
+        
+        /// <summary>
         /// txtUserName control.
         /// </summary>
         /// <remarks>
