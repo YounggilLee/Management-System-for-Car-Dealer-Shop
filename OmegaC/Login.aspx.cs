@@ -23,8 +23,12 @@ namespace OmegaC
             string username = txtUserName.Text.Trim();
             string password = txtPassWord.Text.Trim();
 
+           //string password = Encryptor.EncryptText(txtPassword.Text.Trim());
+
             if (AuthenticateUser(username, password))
             {
+                //FormsAuthentication.RedirectFromLoginPage(username, false);
+
                 lblMessage.Text = "Login success";
                 lblMessage.ForeColor = Color.Green;
 
@@ -66,7 +70,7 @@ namespace OmegaC
 
         protected void txtCreateUser_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/CreateUser.aspx");
+            Response.Redirect("~/Register.aspx");
         }
     }
 }

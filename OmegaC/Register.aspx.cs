@@ -25,28 +25,62 @@ namespace OmegaC
             string username = txtUserName.Text.Trim();
             string password = txtPassWord.Text.Trim();
 
-            int result = 0;
+            if (UserExists(username))
+            {
+                lblMessage.Text = "This username is already taken. Please try again.";
+                lblMessage.ForeColor = System.Drawing.Color.Red;
+            }
+            else
+            {
+                if (CreateUsers(username, password))
+                {
+                    lblMessage.Text = "User registered";
+                    lblMessage.ForeColor = System.Drawing.Color.Green;
+                }
+                else
+                {
+                    lblMessage.Text = "User not registered";
+                    lblMessage.ForeColor = System.Drawing.Color.Red;
+                }
+            }
+        }
 
-            string query = "INSERT INTO users(username, password)VALUES(@username,@password);" ;
+        private bool UserExists(string username)
+        {
+            string query = "Select Count(Username) from users where Username = @Username;";
+
+            int result;
 
             using (SqlConnection conn = new SqlConnection(cs))
             {
                 SqlCommand cmd = new SqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@username", username);
-                cmd.Parameters.AddWithValue("@password", password);
-                conn.Open();            
-                result = cmd.ExecuteNonQuery();
-            }
-            if (result == 0)
-            {
-                lblMessage.Text = "Not creates the user";
-                
-            }
-            else
-            {
-                lblMessage.Text = "The user is Created";
+                cmd.Parameters.AddWithValue("@Username", username);
+                conn.Open();
+
+                result = (int)cmd.ExecuteScalar();
             }
 
+            if (result == 1) return true;
+            else return false;
+        }
+
+        private bool CreateUsers(string username, string password)
+        {
+            string query = "Insert into users (username, password) values (@Username, @Password);";
+            int result = 0;
+
+            using (SqlConnection conn = new SqlConnection(cs))
+            {
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@Username", username);
+                cmd.Parameters.AddWithValue("@Password", password);
+                conn.Open();
+
+                result = (int)cmd.ExecuteNonQuery();
+            }
+
+            if (result == 1) return true;
+            else return false;
         }
 
         protected void btnBack_Click(object sender, EventArgs e)

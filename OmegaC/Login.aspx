@@ -57,7 +57,7 @@
             <asp:Button ID="btnLogin" runat="server" OnClick="btnLogin_Click" Text="Login" />
                 </td>
                 <td class="auto-style1">
-            <asp:Button ID="txtCreateUser" runat="server" CausesValidation="False" OnClick="txtCreateUser_Click" Text="CreateUser" />
+            <asp:Button ID="txtCreateUser" runat="server" CausesValidation="False" OnClick="txtCreateUser_Click" Text="Register" />
                 </td>
                 <td class="auto-style2">
         <asp:Label ID="lblMessage" runat="server"></asp:Label>
