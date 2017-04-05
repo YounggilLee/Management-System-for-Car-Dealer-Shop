@@ -1,0 +1,35 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="SiteMater.master.cs" Inherits="OmegaC.SiteMater" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <link href="Styles/Styles.css" rel="stylesheet" />
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div id="Wrapper">
+        <header>Header</header>
+
+        <aside>Sidebar<br />
+            <br />
+            <asp:TextBox ID="txtMasterPageTextBox" runat="server"></asp:TextBox>
+&nbsp;<asp:Button ID="btnOk" runat="server" OnClick="btnOk_Click" Text="OK" />
+            <br />
+            <br />
+            <br />
+            Text coming from Content Page:<br />
+            <asp:Label ID="lblMessage" runat="server"></asp:Label>
+        </aside>
+
+        <section id="ContentArea">Content Area<br />
+            <asp:ContentPlaceHolder ID="ContentPlaceHolderMain" runat="server">
+            </asp:ContentPlaceHolder>
+        </section>
+
+        <footer>Footer</footer>
+    </div>
+    </form>
+</body>
+</html>
