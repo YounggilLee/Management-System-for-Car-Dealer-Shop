@@ -20,7 +20,7 @@
         <asp:MenuItem NavigateUrl="~/SecurePages/Invoice.aspx" Text="Invoice" Value="Invoice"></asp:MenuItem>
         <asp:MenuItem NavigateUrl="~/SecurePages/RepairService.aspx" Text="RepairService" Value="RepairService"></asp:MenuItem>
         <asp:MenuItem NavigateUrl="~/SecurePages/Customer.aspx" Text="Customer" Value="Customer"></asp:MenuItem>
-        <asp:MenuItem NavigateUrl="~/SecurePages/Customer.aspx" Text="Employee" Value="Employee"></asp:MenuItem>
+        <asp:MenuItem NavigateUrl="~/SecurePages/Employee.aspx" Text="Employee" Value="Employee"></asp:MenuItem>
         <asp:MenuItem NavigateUrl="~/Register.aspx" Text="Register" Value="Register"></asp:MenuItem>
         <asp:MenuItem NavigateUrl="~/Login.aspx" Text="Login" Value="Login"></asp:MenuItem>
     </Items>
