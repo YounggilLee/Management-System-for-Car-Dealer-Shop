@@ -17,6 +17,11 @@
     </div>
         <table style="width: 40%; margin: auto;">
             <tr>
+                <td colspan="2">
+                    <h3 style="text-decoration: underline; color: #0000FF;">Car Management System&nbsp;</h3>
+                </td>
+            </tr>
+            <tr>
                 <td>Car&nbsp; Serial:</td>
                 <td>
                     <asp:TextBox ID="txtCarSerial" runat="server" Width="63px"></asp:TextBox>
@@ -60,7 +65,7 @@
             </tr>
             <tr>
                 <td>&nbsp;</td>
-                <td>&nbsp;</td>
+                <td style="text-decoration: underline"></td>
             </tr>
             <tr>
                 <td colspan="2">

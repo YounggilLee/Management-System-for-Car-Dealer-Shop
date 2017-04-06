@@ -17,6 +17,11 @@
     </div>
         <table style="width: 40%; margin: auto;">
             <tr>
+                <td colspan="2">
+                    <h3 style="text-decoration: underline; color: #0000FF;">Customer Management System</h3>
+                </td>
+            </tr>
+            <tr>
                 <td>Customer&nbsp; ID:</td>
                 <td>
                     <asp:TextBox ID="txtCustomerID" runat="server" Width="63px"></asp:TextBox>

@@ -79,6 +79,8 @@
       <DependentUpon>OmegaUsers.mdf</DependentUpon>
     </Content>
     <Content Include="Default.aspx" />
+    <Content Include="Images\car.jpg" />
+    <Content Include="Images\Omega.jpg" />
     <Content Include="Register.aspx" />
     <Content Include="Global.asax" />
     <Content Include="SecurePages\Customer.aspx" />

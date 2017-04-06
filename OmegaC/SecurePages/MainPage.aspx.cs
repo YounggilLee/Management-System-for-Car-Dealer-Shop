@@ -12,10 +12,12 @@ namespace OmegaC
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            lblLoginUser.Text = (string)Session["username"];
+            string loginUserName = Session["userName"] + "\t\t";
+            lblLoginUser.Text = loginUserName;
             lblLoginUser.ForeColor = Color.Red;
+            lblMessage.Text = "Welcome OmegaC System!!";
+           
 
-            lblMessage.Text = Session["userName"] +"Welcome OmegaC System!!";
         }
     }
 }

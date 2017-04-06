@@ -20,10 +20,15 @@
     <div>
     
         <uc1:HeaderUserControl ID="HeaderUserControl1" runat="server" />
-        <h3>Register Page</h3>
     
     </div>
+         <div style="margin:0 auto 0 auto; width:450px;">
 &nbsp;<table class="auto-style1" style="width: auto; margin: auto;">
+            <tr>
+                <td colspan="3">
+                    <h3 style="color: #0000FF; text-decoration: underline">Register Page</h3>
+                </td>
+            </tr>
             <tr>
                 <td>UserName </td>
                 <td>
@@ -36,7 +41,7 @@
             <tr>
                 <td>PassWord</td>
                 <td>
-            <asp:TextBox ID="txtPassWord" runat="server"></asp:TextBox>
+            <asp:TextBox ID="txtPassWord" type="password" runat="server"></asp:TextBox>
                 </td>
                 <td class="auto-style2">
             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtPassWord" ErrorMessage="Password is required" ForeColor="Red"></asp:RequiredFieldValidator>
@@ -45,7 +50,7 @@
             <tr>
                 <td>Confirm PassWord</td>
                 <td>
-            <asp:TextBox ID="txtConfirmPassWord" runat="server"></asp:TextBox>
+            <asp:TextBox ID="txtConfirmPassWord" type="password" runat="server"></asp:TextBox>
                 </td>
                 <td class="auto-style2">
             <asp:CompareValidator ID="CompareValidator1" runat="server" ControlToCompare="txtPassWord" ControlToValidate="txtConfirmPassWord" ErrorMessage="Password and confirm Password didnot match" ForeColor="Red"></asp:CompareValidator>
@@ -68,6 +73,7 @@
                 </td>
             </tr>
         </table>
+             </div>
         <p>
             &nbsp;</p>
     </form>

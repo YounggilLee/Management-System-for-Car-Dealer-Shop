@@ -11,12 +11,23 @@
 <body>
     <form id="form1" runat="server">
         <uc1:HeaderUserControl ID="HeaderUserControl1" runat="server" />
-    <div>
-    
+      <div style="margin:0 auto 0 auto; width:400px;">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:Label ID="lblLoginUser" runat="server"></asp:Label>
         <asp:Label ID="lblMessage" runat="server"></asp:Label>
     
+          <br />
+          <br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    
     </div>
+        <p>
+            &nbsp;</p>
+             <div style="margin:0 auto 0 auto; width:400px;">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:Image ID="Image1" runat="server" Height="74px" ImageUrl="~/Images/Omega.jpg" Width="155px" />
+            <asp:Image ID="Image2" runat="server" Height="73px" ImageUrl="~/Images/car.jpg" Width="138px" />
+                 </div>
     </form>
 </body>
 </html>

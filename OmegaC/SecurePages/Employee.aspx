@@ -15,7 +15,7 @@
     
         <asp:Button ID="btnLoadData" runat="server" Text="LoadData" OnClick="btnLoadData_Click" />
         <br />
-        <asp:GridView ID="grdEmployee" runat="server" AutoGenerateColumns="False" DataKeyNames="employeeID" EmptyDataText="There are no data records to display." Width="702px">
+        <asp:GridView ID="grdEmployee" runat="server" AutoGenerateColumns="False" DataKeyNames="employeeID" EmptyDataText="There are no data records to display." OnRowCancelingEdit="grdEmployee_RowCancelingEdit" OnRowDeleting="grdEmployee_RowDeleting" OnRowEditing="grdEmployee_RowEditing" OnRowUpdating="grdEmployee_RowUpdating" Width="702px">
             <Columns>
                 <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
                 <asp:BoundField DataField="employeeID" HeaderText="employeeID" ReadOnly="True" SortExpression="employeeID" />

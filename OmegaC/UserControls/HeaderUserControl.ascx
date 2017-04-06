@@ -4,10 +4,16 @@
         margin-left: 120px;
     }
 </style>
+
+
+<div style="margin:0 auto 0 auto; width:300px;">
 <h3 > OmegaC Management System</h3>
+</div>
 <p>
     &nbsp;</p>
-<asp:Menu ID="Menu1" runat="server" BackColor="#FFFBD6" DynamicHorizontalOffset="2" Font-Names="Verdana" Font-Size="0.8em" ForeColor="#990000" Orientation="Horizontal" StaticSubMenuIndent="10px">
+
+<div style="margin:0 auto 0 auto; width:650px;">
+<asp:Menu ID="Menu1" runat="server" BackColor="#FFFBD6" DynamicHorizontalOffset="2" Font-Names="Verdana" Font-Size="0.8em" ForeColor="#990000" Orientation="Horizontal" StaticSubMenuIndent="10px" Width="100%">
     <DynamicHoverStyle BackColor="#990000" ForeColor="White" />
     <DynamicMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
     <DynamicMenuStyle BackColor="#FFFBD6" />
@@ -28,5 +34,6 @@
     <StaticMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
     <StaticSelectedStyle BackColor="#FFCC66" />
 </asp:Menu>
+    </div>
 <hr />
 
