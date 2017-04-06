@@ -10,7 +10,7 @@
     <Items>
         <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Home" Value="Home"></asp:MenuItem>
         <asp:MenuItem NavigateUrl="~/SecurePages/MainPage.aspx" Text="MainPage" Value="MainPage"></asp:MenuItem>
-        <asp:MenuItem NavigateUrl="~/SecurePages/Vehicle.aspx" Text="Vehicle" Value="Vehicle"></asp:MenuItem>
+        <asp:MenuItem NavigateUrl="~/SecurePages/Car.aspx" Text="Car" Value="Car"></asp:MenuItem>
         <asp:MenuItem NavigateUrl="~/SecurePages/Option.aspx" Text="Option" Value="Option"></asp:MenuItem>
         <asp:MenuItem NavigateUrl="~/SecurePages/Invoice.aspx" Text="Invoice" Value="Invoice"></asp:MenuItem>
         <asp:MenuItem NavigateUrl="~/SecurePages/RepairService.aspx" Text="RepairService" Value="RepairService"></asp:MenuItem>

@@ -88,11 +88,22 @@
     <Content Include="packages.config" />
     <Content Include="SecurePages\Option.aspx" />
     <Content Include="SecurePages\RepairService.aspx" />
-    <Content Include="SecurePages\Vehicle.aspx" />
+    <Content Include="SecurePages\Car.aspx" />
     <Content Include="SiteMater.Master" />
     <Content Include="UserControls\HeaderUserControl.ascx" />
     <Content Include="WebForm1.aspx" />
     <Content Include="SecurePages\Web.config" />
+    <Content Include="dsOmegaC.xsc">
+      <DependentUpon>dsOmegaC.xsd</DependentUpon>
+    </Content>
+    <None Include="dsOmegaC.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsOmegaC.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="dsOmegaC.xss">
+      <DependentUpon>dsOmegaC.xsd</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -116,6 +127,11 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="dsOmegaC.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsOmegaC.xsd</DependentUpon>
     </Compile>
     <Compile Include="Encryptor.cs" />
     <Compile Include="Register.aspx.cs">
@@ -179,12 +195,12 @@
     <Compile Include="SecurePages\RepairService.aspx.designer.cs">
       <DependentUpon>RepairService.aspx</DependentUpon>
     </Compile>
-    <Compile Include="SecurePages\Vehicle.aspx.cs">
-      <DependentUpon>Vehicle.aspx</DependentUpon>
+    <Compile Include="SecurePages\Car.aspx.cs">
+      <DependentUpon>Car.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="SecurePages\Vehicle.aspx.designer.cs">
-      <DependentUpon>Vehicle.aspx</DependentUpon>
+    <Compile Include="SecurePages\Car.aspx.designer.cs">
+      <DependentUpon>Car.aspx</DependentUpon>
     </Compile>
     <Compile Include="SiteMater.Master.cs">
       <DependentUpon>SiteMater.Master</DependentUpon>
