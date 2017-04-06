@@ -8,6 +8,7 @@ using OmegaC.dsOmegaCTableAdapters;
 
 namespace OmegaC.SecurePages
 {
+    using System.Drawing;
     using TableCars = dsOmegaC.carDataTable;
 
     public partial class Vehicle : System.Web.UI.Page
@@ -30,6 +31,7 @@ namespace OmegaC.SecurePages
             grdCars.DataBind();
 
             lblMessage.Text = "Data loaded";
+            lblMessage.ForeColor = Color.Green;
         }
 
         protected void btnLoad_Click(object sender, EventArgs e)
@@ -53,10 +55,12 @@ namespace OmegaC.SecurePages
                 txtCarPrice.Text = row.price.ToString();               
 
                 lblMessage.Text = "Record found";
+                lblMessage.ForeColor = Color.Green;
             }
             else
             {
                 lblMessage.Text = "Record not found";
+                lblMessage.ForeColor = Color.Red;
             }
         }
 
@@ -75,17 +79,19 @@ namespace OmegaC.SecurePages
             //int result = adpProducts.Update(tblProducts);
 
             // or, call the Insert() method on the adapter
-            int result = adpCars.Insert(txtCarSerial.Text, txtCarMake.Text, txtCarModel.Text, Convert.ToInt16(txtCarYear.Text), Convert.ToInt16(txtCarPrice.Text));
+            int result = adpCars.Insert(txtCarSerial.Text, txtCarMake.Text, txtCarModel.Text, Convert.ToDecimal(txtCarYear.Text), Convert.ToDecimal(txtCarPrice.Text));
 
 
             if (result == 1)
             {
                 RefreshGridView();
                 lblMessage.Text = "New Car Added";
+                lblMessage.ForeColor = Color.Green;
             }
             else
             {
                 lblMessage.Text = "New Car not Added";
+                lblMessage.ForeColor = Color.Red;
             }
         }
 
@@ -105,7 +111,7 @@ namespace OmegaC.SecurePages
                 row.make = txtCarMake.Text;
                 row.model = txtCarModel.Text;
                 row.cyear = Convert.ToDecimal(txtCarYear.Text);
-                row.price = Convert.ToInt16(txtCarPrice.Text);
+                row.price = Convert.ToDecimal(txtCarPrice.Text);
 
                 int result = adpCars.Update(tblcars);
 
@@ -113,10 +119,12 @@ namespace OmegaC.SecurePages
                 {
                     RefreshGridView();
                     lblMessage.Text = "Car updated";
+                    lblMessage.ForeColor = Color.Green;
                 }
                 else
                 {
                     lblMessage.Text = "Car not updated";
+                    lblMessage.ForeColor = Color.Red;
                 }
             }
         }
@@ -131,10 +139,12 @@ namespace OmegaC.SecurePages
             {
                 RefreshGridView();
                 lblMessage.Text = "Car deleted";
+                lblMessage.ForeColor = Color.Green;
             }
             else
             {
                 lblMessage.Text = "Car not deleted";
+                lblMessage.ForeColor = Color.Red;
             }
         }
     }

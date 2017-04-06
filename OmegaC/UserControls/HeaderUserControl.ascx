@@ -1,5 +1,10 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="HeaderUserControl.ascx.cs" Inherits="OmegaC.UserControls.HeaderUserControl" %>
-<h3>OmegaC Management System</h3>
+<style type="text/css">
+    .auto-style1 {
+        margin-left: 120px;
+    }
+</style>
+<h3 > OmegaC Management System</h3>
 <p>
     &nbsp;</p>
 <asp:Menu ID="Menu1" runat="server" BackColor="#FFFBD6" DynamicHorizontalOffset="2" Font-Names="Verdana" Font-Size="0.8em" ForeColor="#990000" Orientation="Horizontal" StaticSubMenuIndent="10px">
