@@ -7,6 +7,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+    <style type="text/css">
+        .auto-style2 {
+            width: 44%;
+        }
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -15,7 +20,7 @@
         <uc1:HeaderUserControl ID="HeaderUserControl1" runat="server" />
     
     </div>
-        <table style="width: 40%; margin: auto;">
+        <table style="margin: auto;" class="auto-style2">
             <tr>
                 <td colspan="2">
                     <h3 style="text-decoration: underline; color: #0000FF;">Customer Management System</h3>
@@ -25,7 +30,7 @@
                 <td>Customer&nbsp; ID:</td>
                 <td>
                     <asp:TextBox ID="txtCustomerID" runat="server" Width="63px"></asp:TextBox>
-                    &nbsp;<asp:Button ID="btnLoad" runat="server" OnClick="btnLoad_Click" Text="Load" />
+                    &nbsp;<asp:Button ID="btnLoad" runat="server" OnClick="btnLoad_Click" Text="Load" BackColor="#CCFF33" />
                 </td>
             </tr>
             <tr>
@@ -58,9 +63,9 @@
             </tr>
             <tr>
                 <td colspan="2">
-                    <asp:Button ID="btnInsert" runat="server" OnClick="btnInsert_Click" Text="Insert" />
-                    &nbsp;<asp:Button ID="btnUpdate" runat="server" OnClick="btnUpdate_Click" Text="Update" />
-                    &nbsp;<asp:Button ID="btnDelete" runat="server" OnClick="btnDelete_Click" Text="Delete" />
+                    <asp:Button ID="btnInsert" runat="server" OnClick="btnInsert_Click" Text="Insert" BackColor="#3399FF" />
+                    &nbsp;<asp:Button ID="btnUpdate" runat="server" OnClick="btnUpdate_Click" Text="Update" BackColor="#FF9999" />
+                    &nbsp;<asp:Button ID="btnDelete" runat="server" OnClick="btnDelete_Click" Text="Delete" BackColor="#FF0066" />
                 </td>
             </tr>
             <tr>

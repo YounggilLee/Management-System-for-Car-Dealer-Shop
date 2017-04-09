@@ -5,10 +5,11 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using OmegaC.dsOmegaCTableAdapters;
+using System.Drawing;
 
 namespace OmegaC.SecurePages
 {
-    using System.Drawing;
+   
     using TableCars = dsOmegaC.carDataTable;
 
     public partial class Vehicle : System.Web.UI.Page

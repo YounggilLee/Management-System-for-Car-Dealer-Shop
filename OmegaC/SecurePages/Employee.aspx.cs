@@ -16,6 +16,7 @@ namespace OmegaC.SecurePages
 
         string cs = Data.GetConnectionString("OmegaWindConnectionString");
         string query = "Select * from employee;";
+        
 
         SqlConnection conn;
         SqlDataAdapter adapter;
@@ -25,10 +26,10 @@ namespace OmegaC.SecurePages
 
         public Employee()
         {
-            conn = new SqlConnection(cs);
-            adapter = new SqlDataAdapter(query, conn);
-            ds = new DataSet();
-            cmdBuilder = new SqlCommandBuilder(adapter);
+            conn = new SqlConnection(cs);                   // connection object
+            adapter = new SqlDataAdapter(query, conn);      // adapter object
+            ds = new DataSet();                             // an empty dataset
+            cmdBuilder = new SqlCommandBuilder(adapter);    // used to auto-generate SQL INSERT, UPDATE and DELETE queries based on the SELECT query
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -49,6 +50,7 @@ namespace OmegaC.SecurePages
             grdEmployee.DataBind();
 
             lblMessage.Text = "Data loaded from database";
+            lblMessage.ForeColor = Color.Green;
         }
 
         private void GetDataFromCache()
@@ -62,6 +64,7 @@ namespace OmegaC.SecurePages
                 grdEmployee.DataBind();
 
                 lblMessage.Text = "Data loaded from cache";
+                lblMessage.ForeColor = Color.Green;
             }
         }
 
@@ -142,6 +145,36 @@ namespace OmegaC.SecurePages
             GetDataFromCache();
 
             lblMessage.Text = "Changes undone";
+        }
+
+        protected void btnInsert_Click(object sender, EventArgs e)
+        {
+            DataTable tblEmployee = (DataTable)Cache["tblemployee"];
+
+            DataRow newRow = tblEmployee.NewRow();  // create a new row
+            newRow["employeeID"] = txtEmployeeID.Text;
+            newRow["firstName"] = txtFirstName.Text;
+            newRow["lastName"] = txtLastName.Text;
+            newRow["salary"] = txtSalary.Text;
+            newRow["commission"] = txtCommission.Text;
+            tblEmployee.Rows.Add(newRow);   // add the new row to the Rows collection
+
+            adapter.InsertCommand = cmdBuilder.GetInsertCommand();
+            int result = adapter.Update(tblEmployee);
+
+            if (result == 1)
+            {
+                lblMessage.Text = "New Employee is inserted";
+                lblMessage.ForeColor = System.Drawing.Color.Green;
+
+                grdEmployee.DataSource = tblEmployee;
+                grdEmployee.DataBind();
+            }
+            else
+            {
+                lblMessage.Text = "New Employee is not inserted";
+                lblMessage.ForeColor = System.Drawing.Color.Red;
+            }
         }
     }
 

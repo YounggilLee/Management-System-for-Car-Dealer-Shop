@@ -7,16 +7,95 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+    <style type="text/css">
+
+        .auto-style2 {
+            height: 26px;
+        }
+        .auto-style3 {
+            height: 29px;
+        }
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">
         <uc1:HeaderUserControl ID="HeaderUserControl1" runat="server" />
     <div>
     
-        <asp:Button ID="btnLoadData" runat="server" Text="LoadData" OnClick="btnLoadData_Click" />
-        <asp:Button ID="btnUndo" runat="server" OnClick="btnUndo_Click" Text="Undo" />
+        <table style="width: 40%; margin: auto;">
+            <tr>
+                <td colspan="2">
+                    <h3 style="text-decoration: underline; color: #0000FF;">&nbsp;</h3>
+                </td>
+            </tr>
+            <tr>
+                <td>Employee ID:</td>
+                <td>
+                    <asp:TextBox ID="txtEmployeeID" runat="server" Width="63px"></asp:TextBox>
+                    &nbsp;<asp:Button ID="btnInsert" runat="server" OnClick="btnInsert_Click" Text="Insert" BackColor="#33CCFF" />
+                </td>
+            </tr>
+            <tr>
+                <td>First&nbsp;Name:</td>
+                <td>
+                    <asp:TextBox ID="txtFirstName" runat="server"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td>Last&nbsp;Name:</td>
+                <td>
+                    <asp:TextBox ID="txtLastName" runat="server"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td class="auto-style2">Salary :</td>
+                <td class="auto-style2">
+                    <asp:TextBox ID="txtSalary" runat="server"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td class="auto-style2">Sales :</td>
+                <td class="auto-style2">
+                    <asp:TextBox ID="txtSales" runat="server"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td class="auto-style3">Commission :</td>
+                <td class="auto-style3">
+                    <asp:TextBox ID="txtCommission" runat="server"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    &nbsp;</td>
+            </tr>
+            <tr>
+                <td>
+                    <asp:Label ID="lblMessage0" runat="server"></asp:Label>
+                </td>
+                <td style="text-decoration: underline"></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    &nbsp;</td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    &nbsp;</td>
+            </tr>
+            <tr>
+                <td>
+    
+        <asp:Button ID="btnLoadData" runat="server" Text="LoadData" OnClick="btnLoadData_Click" BackColor="Lime" />
+                </td>
+                <td>
+        <asp:Button ID="btnUndo" runat="server" OnClick="btnUndo_Click" Text="Undo" BackColor="#FF0066" />
+                </td>
+            </tr>
+        </table>
+    
         <br />
-        <asp:GridView ID="grdEmployee" runat="server" AutoGenerateColumns="False" DataKeyNames="employeeID" EmptyDataText="There are no data records to display." OnRowCancelingEdit="grdEmployee_RowCancelingEdit" OnRowDeleting="grdEmployee_RowDeleting" OnRowEditing="grdEmployee_RowEditing" OnRowUpdating="grdEmployee_RowUpdating" Width="702px" CellPadding="4" ForeColor="#333333" GridLines="None">
+        <asp:GridView ID="grdEmployee" runat="server" AutoGenerateColumns="False" style="margin:auto" DataKeyNames="employeeID" EmptyDataText="There are no data records to display." OnRowCancelingEdit="grdEmployee_RowCancelingEdit" OnRowDeleting="grdEmployee_RowDeleting" OnRowEditing="grdEmployee_RowEditing" OnRowUpdating="grdEmployee_RowUpdating" Width="702px" CellPadding="4" ForeColor="#333333" GridLines="None">
             <AlternatingRowStyle BackColor="White" />
             <Columns>
                 <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
@@ -39,9 +118,22 @@
         </asp:GridView>
       
         <br />
-        <br />
-        <asp:Button ID="btnSaveData" runat="server" Text="SaveData" OnClick="btnSaveData_Click" />
+        <table style="width: 40%; margin: auto;">
+            <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>
+        <asp:Button ID="btnSaveData" runat="server" Text="SaveData" OnClick="btnSaveData_Click" BackColor="Yellow" />
+                </td>
+                <td>
         <asp:Label ID="lblMessage" runat="server"></asp:Label>
+    
+                </td>
+            </tr>
+        </table>
+        <br />
     
     </div>
     </form>
