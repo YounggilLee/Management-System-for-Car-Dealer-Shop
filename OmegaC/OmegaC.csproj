@@ -79,6 +79,7 @@
       <DependentUpon>OmegaUsers.mdf</DependentUpon>
     </Content>
     <Content Include="Default.aspx" />
+    <Content Include="Images\Calendar.png" />
     <Content Include="Images\car.jpg" />
     <Content Include="Images\Omega.jpg" />
     <Content Include="Register.aspx" />
@@ -92,6 +93,7 @@
     <Content Include="SecurePages\RepairService.aspx" />
     <Content Include="SecurePages\Car.aspx" />
     <Content Include="SiteMater.Master" />
+    <Content Include="UserControls\CalendarUserControl.ascx" />
     <Content Include="UserControls\HeaderUserControl.ascx" />
     <Content Include="WebForm1.aspx" />
     <Content Include="SecurePages\Web.config" />
@@ -210,6 +212,13 @@
     </Compile>
     <Compile Include="SiteMater.Master.designer.cs">
       <DependentUpon>SiteMater.Master</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\CalendarUserControl.ascx.cs">
+      <DependentUpon>CalendarUserControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\CalendarUserControl.ascx.designer.cs">
+      <DependentUpon>CalendarUserControl.ascx</DependentUpon>
     </Compile>
     <Compile Include="UserControls\HeaderUserControl.ascx.cs">
       <DependentUpon>HeaderUserControl.ascx</DependentUpon>
