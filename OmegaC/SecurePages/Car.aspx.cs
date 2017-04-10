@@ -49,11 +49,11 @@ namespace OmegaC.SecurePages
                 var row = tblcars[0];
 
                 // assign the values from the row to the textboxes
-                txtCarSerial.Text = row.serial;
-                txtCarMake.Text = row.make;
-                txtCarModel.Text = row.model;
-                txtCarYear.Text = row.cyear.ToString();
-                txtCarPrice.Text = row.price.ToString();               
+                txtCarSerial.Text = InputData.dataInput(row.serial);
+                txtCarMake.Text = InputData.dataInput(row.make);
+                txtCarModel.Text = InputData.dataInput(row.model);
+                txtCarYear.Text = InputData.dataInput(row.cyear);
+                txtCarPrice.Text = InputData.dataInput(row.price);               
 
                 lblMessage.Text = "Record found";
                 lblMessage.ForeColor = Color.Green;
@@ -67,19 +67,7 @@ namespace OmegaC.SecurePages
 
         protected void btnInsert_Click(object sender, EventArgs e)
         {
-            // create a new row
-            // fill the row
-            // add the row to the data table
-            //var newRow = tblProducts.NewProductsRow();
-            //newRow.ProductName = txtProductName.Text;
-            //newRow.UnitPrice = Convert.ToDecimal(txtProductPrice.Text);
-            //newRow.UnitsInStock = Convert.ToInt16(txtProductQuantity.Text);
-            //tblProducts.AddProductsRow(newRow);
-
-            // call the Update() method execute the insert sql query on the database
-            //int result = adpProducts.Update(tblProducts);
-
-            // or, call the Insert() method on the adapter
+         
             int result = adpCars.Insert(txtCarSerial.Text, txtCarMake.Text, txtCarModel.Text, Convert.ToDecimal(txtCarYear.Text), Convert.ToDecimal(txtCarPrice.Text));
 
 

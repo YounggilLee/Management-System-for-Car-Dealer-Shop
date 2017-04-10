@@ -50,11 +50,11 @@ namespace OmegaC.SecurePages
                 var row = tblCustomers[0];
 
                 // assign the values from the row to the textboxes
-                txtCustomerID.Text = row.customerID.ToString();
-                txtFirstName.Text = row.firstName;
-                txtLastName.Text = row.lastName;
-                txtAddress.Text = row.address;
-                txtPhone.Text = row.phone.ToString();
+                txtCustomerID.Text = InputData.dataInput(row.customerID);
+                txtFirstName.Text = InputData.dataInput(row.firstName);
+                txtLastName.Text = InputData.dataInput(row.lastName);
+                txtAddress.Text = InputData.dataInput(row.address);
+                txtPhone.Text = InputData.dataInput(row.phone);
 
                 lblMessage.Text = "Record found";
                 lblMessage.ForeColor = Color.Green;

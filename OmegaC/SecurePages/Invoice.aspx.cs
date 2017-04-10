@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using OmegaC.dsOmegaCTableAdapters;
 
+
 namespace OmegaC.SecurePages
 {
     using System.Drawing;
@@ -49,14 +50,14 @@ namespace OmegaC.SecurePages
                 var row = tblInvoices[0];
 
                 // assign the values from the row to the textboxes
-                txtInvoiceNumber.Text = row.invNum.ToString();
+                txtInvoiceNumber.Text =InputData.dataInput(row.invNum);
                 CalendarUserControl1.SelectedDate = row.invDate.ToString();
-                txtNetPrice.Text = row.netPrice.ToString();
-                txtTax.Text = row.tax.ToString();
-                txtOtherFees.Text = row.otherFees.ToString();
-                txtCustomerID.Text = row.customerID.ToString();
-                txtCarSerial.Text = row.serial;
-                txtEmployeeID.Text = row.employeeID.ToString();
+                txtNetPrice.Text = InputData.dataInput(row.netPrice);
+                txtTax.Text = InputData.dataInput(row.tax);
+                txtOtherFees.Text = InputData.dataInput(row.otherFees);
+                txtCustomerID.Text = InputData.dataInput(row.customerID);
+                txtCarSerial.Text = InputData.dataInput(row.serial);
+                txtEmployeeID.Text = InputData.dataInput(row.employeeID);
 
                 lblMessage.Text = "Record found";
                 lblMessage.ForeColor = Color.Green;

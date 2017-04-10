@@ -13,7 +13,7 @@ namespace OmegaC.UserControls
         public string SelectedDate
         {
             get { return txtDate.Text; }
-            set { }
+            set { txtDate.Text = value; }
 
         }
 
@@ -37,7 +37,8 @@ namespace OmegaC.UserControls
         protected void Calendar1_SelectionChanged(object sender, EventArgs e)
         {
             // assign the selected date to the text box
-            txtDate.Text = Calendar1.SelectedDate.ToShortDateString();
+            //txtDate.Text = Calendar1.SelectedDate.ToShortDateString();
+            txtDate.Text = Calendar1.SelectedDate.ToString("MM/dd/yyyy");
             Calendar1.Visible = false;
         }
     }
