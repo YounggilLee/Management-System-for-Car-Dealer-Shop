@@ -6,7 +6,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>Employee Management</title>
     <style type="text/css">
 
         .auto-style2 {
@@ -16,6 +16,7 @@
             height: 29px;
         }
     </style>
+    <link rel="stylesheet" type="text/css" href="~/Styles/Styles.css">
 </head>
 <body>
     <form id="form1" runat="server">
@@ -25,7 +26,7 @@
         <table style="width: 40%; margin: auto;">
             <tr>
                 <td colspan="2">
-                    <h3 style="text-decoration: underline; color: #0000FF;">&nbsp;</h3>
+                    <h3 style="text-decoration: underline; color: #0000FF;">Employee Management</h3>
                 </td>
             </tr>
             <tr>

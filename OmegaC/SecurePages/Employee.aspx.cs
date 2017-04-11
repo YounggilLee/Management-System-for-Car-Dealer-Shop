@@ -50,7 +50,7 @@ namespace OmegaC.SecurePages
             grdEmployee.DataBind();
 
             lblMessage.Text = "Data loaded from database";
-            lblMessage.ForeColor = Color.Green;
+            lblMessage.ForeColor = Color.Yellow;
         }
 
         private void GetDataFromCache()
@@ -64,7 +64,7 @@ namespace OmegaC.SecurePages
                 grdEmployee.DataBind();
 
                 lblMessage.Text = "Data loaded from cache";
-                lblMessage.ForeColor = Color.Green;
+                lblMessage.ForeColor = Color.Yellow;
             }
         }
 
@@ -96,6 +96,7 @@ namespace OmegaC.SecurePages
             GetDataFromCache();
 
             lblMessage.Text = "Record updated";
+            lblMessage.ForeColor = Color.Yellow;
         }
 
 
@@ -115,6 +116,7 @@ namespace OmegaC.SecurePages
 
             GetDataFromCache();
             lblMessage.Text = "Record deleted";
+            lblMessage.ForeColor = Color.Red;
         }
 
         protected void btnSaveData_Click(object sender, EventArgs e)
@@ -130,10 +132,12 @@ namespace OmegaC.SecurePages
             if (result > 0)
             {
                 lblMessage.Text = "Data saved to database";
+                lblMessage.ForeColor = Color.Yellow;
             }
             else
             {
                 lblMessage.Text = "No changes were made in the gridview";
+                lblMessage.ForeColor = Color.Red;
             }
         }
 
@@ -145,6 +149,7 @@ namespace OmegaC.SecurePages
             GetDataFromCache();
 
             lblMessage.Text = "Changes undone";
+            lblMessage.ForeColor = Color.Red;
         }
 
         protected void btnInsert_Click(object sender, EventArgs e)
@@ -165,7 +170,7 @@ namespace OmegaC.SecurePages
             if (result == 1)
             {
                 lblMessage.Text = "New Employee is inserted";
-                lblMessage.ForeColor = System.Drawing.Color.Green;
+                lblMessage.ForeColor = Color.Yellow;
 
                 grdEmployee.DataSource = tblEmployee;
                 grdEmployee.DataBind();
@@ -173,7 +178,7 @@ namespace OmegaC.SecurePages
             else
             {
                 lblMessage.Text = "New Employee is not inserted";
-                lblMessage.ForeColor = System.Drawing.Color.Red;
+                lblMessage.ForeColor = Color.Red;
             }
         }
     }

@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Web.Security;
 
 namespace OmegaC.UserControls
 {
@@ -11,7 +13,26 @@ namespace OmegaC.UserControls
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if(Session["userName"] != null)
+            {
+                lblMessage.Text = "Login User ID :";
+                lblUserName.Text =  Session["userName"].ToString();
+                lblUserName.ForeColor = Color.Yellow;                
+                btnLogOut.Visible = true;
 
+            }
+            else
+            {
+                btnLogOut.Visible = false;
+            }
+        }
+
+        protected void btnLogOut_Click(object sender, EventArgs e)
+        {
+            Session.Clear();
+            //Session.Abondon();
+            FormsAuthentication.SignOut();
+            Response.Redirect("~/Login.aspx");
         }
     }
 }

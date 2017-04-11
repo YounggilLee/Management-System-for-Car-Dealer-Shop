@@ -6,12 +6,13 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>Customer Management</title>
     <style type="text/css">
         .auto-style2 {
             width: 44%;
         }
     </style>
+    <link rel="stylesheet" type="text/css" href="~/Styles/Styles.css">
 </head>
 <body>
     <form id="form1" runat="server">
@@ -64,7 +65,7 @@
             <tr>
                 <td colspan="2">
                     <asp:Button ID="btnInsert" runat="server" OnClick="btnInsert_Click" Text="Insert" BackColor="#3399FF" />
-                    &nbsp;<asp:Button ID="btnUpdate" runat="server" OnClick="btnUpdate_Click" Text="Update" BackColor="#FF9999" />
+                    &nbsp;<asp:Button ID="btnUpdate" runat="server" OnClick="btnUpdate_Click" Text="Update" BackColor="Yellow" />
                     &nbsp;<asp:Button ID="btnDelete" runat="server" OnClick="btnDelete_Click" Text="Delete" BackColor="#FF0066" />
                 </td>
             </tr>

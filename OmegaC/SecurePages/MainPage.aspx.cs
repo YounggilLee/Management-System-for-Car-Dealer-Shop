@@ -14,7 +14,7 @@ namespace OmegaC
         {
             string loginUserName = Session["userName"] + "\t\t";
             lblLoginUser.Text = loginUserName;
-            lblLoginUser.ForeColor = Color.Red;
+            lblLoginUser.ForeColor = Color.Yellow;
             lblMessage.Text = "Welcome OmegaC System!!";
            
 

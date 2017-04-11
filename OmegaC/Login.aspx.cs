@@ -31,7 +31,7 @@ namespace OmegaC
                 FormsAuthentication.RedirectFromLoginPage(username, false);
 
                 lblMessage.Text = "Login success";
-                lblMessage.ForeColor = Color.Green;
+                lblMessage.ForeColor = Color.Yellow;
 
                 Session["userName"] = username;              
                

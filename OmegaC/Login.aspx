@@ -6,7 +6,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>Log in Page</title>
     <style type="text/css">
         .auto-style1 {
             width: 159px;
@@ -21,6 +21,7 @@
             height: 20px;
         }
         </style>
+    <link rel="stylesheet" type="text/css" href="~/Styles/Styles.css">
 </head>
 <body>
     <form id="form1" runat="server">
@@ -40,7 +41,7 @@
             <tr>
                 <td class="auto-style3">UserName</td>
                 <td class="auto-style1">
-            <asp:TextBox ID="txtUserName" runat="server"></asp:TextBox>
+            <asp:TextBox ID="txtUserName" runat="server" AutoComplete="off"></asp:TextBox>
                 </td>
                 <td class="auto-style2">
             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtUserName" ErrorMessage="Username is required" ForeColor="Red"></asp:RequiredFieldValidator>
@@ -49,7 +50,7 @@
             <tr>
                 <td class="auto-style3">PassWord </td>
                 <td class="auto-style1">
-            <asp:TextBox ID="txtPassWord" type="password" runat="server"></asp:TextBox>
+            <asp:TextBox ID="txtPassWord" type="password" runat="server" AutoComplete="off"></asp:TextBox>
                 </td>
                 <td class="auto-style2">
             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtPassWord" ErrorMessage="Password is required" ForeColor="Red"></asp:RequiredFieldValidator>

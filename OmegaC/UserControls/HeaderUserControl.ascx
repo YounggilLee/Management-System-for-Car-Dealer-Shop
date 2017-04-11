@@ -1,19 +1,27 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="HeaderUserControl.ascx.cs" Inherits="OmegaC.UserControls.HeaderUserControl" %>
+
+
 <style type="text/css">
     .auto-style1 {
-        margin-left: 120px;
+        width: 608px;
+    }
+    .auto-style3 {
+        margin-left: 520px;
     }
 </style>
 
 
 <div style="margin:0 auto 0 auto; width:300px;">
-<h3 > OmegaC Management System</h3>
+<h3 style="background-color: #FFFF00; font-weight: bold; font-size: large" > &nbsp;&nbsp; OmegaC Management System</h3>
 </div>
-<p>
-    &nbsp;</p>
+<p style="text-align:right">
+    <asp:Label ID="lblMessage" runat="server"></asp:Label>
+    <asp:Label ID="lblUserName" runat="server"></asp:Label>
+    <asp:Button ID="btnLogOut" runat="server" OnClick="btnLogOut_Click" Text="LogOut" />
+</p>
 
-<div style="margin:0 auto 0 auto; width:650px;">
-<asp:Menu ID="Menu1" runat="server" BackColor="#FFFBD6" DynamicHorizontalOffset="2" Font-Names="Verdana" Font-Size="0.8em" ForeColor="#990000" Orientation="Horizontal" StaticSubMenuIndent="10px" Width="100%">
+<div style="margin:0 auto 0 auto; " class="auto-style1">
+<asp:Menu ID="Menu1" runat="server" BackColor="#FFFBD6" DynamicHorizontalOffset="2" Font-Names="Verdana" Font-Size="0.8em" ForeColor="#990000" Orientation="Horizontal" StaticSubMenuIndent="10px" Width="110%">
     <DynamicHoverStyle BackColor="#990000" ForeColor="White" />
     <DynamicMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
     <DynamicMenuStyle BackColor="#FFFBD6" />
@@ -34,6 +42,7 @@
     <StaticMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
     <StaticSelectedStyle BackColor="#FFCC66" />
 </asp:Menu>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     </div>
 <hr />
 

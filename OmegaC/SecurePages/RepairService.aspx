@@ -6,13 +6,14 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>Repair Service Management</title>
     <style type="text/css">
         .auto-style2 {
             color: #0000FF;
             text-decoration: underline;
         }
     </style>
+    <link rel="stylesheet" type="text/css" href="~/Styles/Styles.css">
 </head>
 <body>
     <form id="form1" runat="server">
@@ -31,7 +32,7 @@
                 <td>Service&nbsp;Number:</td>
                 <td>
                     <asp:TextBox ID="txtServiceNumber" runat="server" Width="63px"></asp:TextBox>
-                    &nbsp;<asp:Button ID="btnLoad" runat="server" OnClick="btnLoad_Click" Text="Load" />
+                    &nbsp;<asp:Button ID="btnLoad" runat="server" OnClick="btnLoad_Click" Text="Load" BackColor="#99FF33" />
                 </td>
             </tr>
             <tr>
@@ -76,9 +77,9 @@
             </tr>
             <tr>
                 <td colspan="2">
-                    <asp:Button ID="btnInsert" runat="server" OnClick="btnInsert_Click" Text="Insert" />
-                    &nbsp;<asp:Button ID="btnUpdate" runat="server" OnClick="btnUpdate_Click" Text="Update" />
-                    &nbsp;<asp:Button ID="btnDelete" runat="server" OnClick="btnDelete_Click" Text="Delete" />
+                    <asp:Button ID="btnInsert" runat="server" OnClick="btnInsert_Click" Text="Insert" BackColor="Aqua" />
+                    &nbsp;<asp:Button ID="btnUpdate" runat="server" OnClick="btnUpdate_Click" Text="Update" BackColor="Yellow" />
+                    &nbsp;<asp:Button ID="btnDelete" runat="server" OnClick="btnDelete_Click" Text="Delete" BackColor="Red" />
                 </td>
             </tr>
             <tr>

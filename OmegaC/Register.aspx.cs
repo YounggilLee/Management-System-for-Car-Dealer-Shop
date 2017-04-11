@@ -36,7 +36,7 @@ namespace OmegaC
                 if (CreateUsers(username, password))
                 {
                     lblMessage.Text = "User registered";
-                    lblMessage.ForeColor = System.Drawing.Color.Green;
+                    lblMessage.ForeColor = System.Drawing.Color.Yellow;
                 }
                 else
                 {

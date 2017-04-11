@@ -6,7 +6,18 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>Welcom Page</title>
+    <link rel="stylesheet" type="text/css" href="~/Styles/Styles.css">
+    <style type="text/css">
+        .auto-style3 {
+            width: 608px;
+            margin-left: 120px;
+        }
+        .auto-style4 {
+            width: 398px;
+            height: 29px;
+        }
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -16,13 +27,13 @@
     
     </div>
 
-    <div style="margin:0 auto 0 auto; width:400px; color: #0000FF; font-size: medium;">
+    <div style="margin:0 auto 0 auto; color: #FFFF00; font-size: medium;" class="auto-style4">
     <p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Welcome OmegaC Management System!!</p>
         <p> &nbsp;</p>
-        <h3 class="auto-style1" style="color: #FF00FF"> Please Log- in </h3>
+        
         </div>
-        <p>
-            &nbsp;</p>
+        <h3 style="text-align:center; color:darkred;">
+            Please Log- in </h3>
         <p>
              <div style="margin:0 auto 0 auto; width:400px;">
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

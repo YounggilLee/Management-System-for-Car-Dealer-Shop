@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>Register Page</title>
     <style type="text/css">
         .auto-style1 {
             width: 100%;
@@ -14,6 +14,7 @@
             width: 338px;
         }
     </style>
+    <link rel="stylesheet" type="text/css" href="~/Styles/Styles.css">
 </head>
 <body>
     <form id="form1" runat="server">

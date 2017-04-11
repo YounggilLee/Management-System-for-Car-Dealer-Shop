@@ -33,6 +33,7 @@ namespace OmegaC.SecurePages
             grdInvoices.DataBind();
 
             lblMessage.Text = "Data loaded";
+            lblMessage.ForeColor = Color.Yellow;
         }
 
 
@@ -60,7 +61,7 @@ namespace OmegaC.SecurePages
                 txtEmployeeID.Text = InputData.dataInput(row.employeeID);
 
                 lblMessage.Text = "Record found";
-                lblMessage.ForeColor = Color.Green;
+                lblMessage.ForeColor = Color.Yellow;
             }
             else
             {
@@ -78,7 +79,7 @@ namespace OmegaC.SecurePages
             {
                 RefreshGridView();
                 lblMessage.Text = "New Customer Added";
-                lblMessage.ForeColor = Color.Green;
+                lblMessage.ForeColor = Color.Yellow;
             }
             else
             {
@@ -114,7 +115,7 @@ namespace OmegaC.SecurePages
                 {
                     RefreshGridView();
                     lblMessage.Text = "Invoice updated";
-                    lblMessage.ForeColor = Color.Green;
+                    lblMessage.ForeColor = Color.Yellow;
                 }
                 else
                 {
@@ -133,12 +134,12 @@ namespace OmegaC.SecurePages
             if (result == 1)
             {
                 RefreshGridView();
-                lblMessage.Text = "Customer deleted";
-                lblMessage.ForeColor = Color.Green;
+                lblMessage.Text = "Invoice deleted";
+                lblMessage.ForeColor = Color.Yellow;
             }
             else
             {
-                lblMessage.Text = "Customer not deleted";
+                lblMessage.Text = "Invoice not deleted";
                 lblMessage.ForeColor = Color.Red;
             }
         }

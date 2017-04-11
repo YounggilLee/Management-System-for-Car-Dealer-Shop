@@ -34,6 +34,7 @@ namespace OmegaC.SecurePages
             grdCustomers.DataBind();
 
             lblMessage.Text = "Data loaded";
+            lblMessage.ForeColor = Color.Yellow;
         }
 
         protected void btnLoad_Click(object sender, EventArgs e)
@@ -57,7 +58,7 @@ namespace OmegaC.SecurePages
                 txtPhone.Text = InputData.dataInput(row.phone);
 
                 lblMessage.Text = "Record found";
-                lblMessage.ForeColor = Color.Green;
+                lblMessage.ForeColor = Color.Yellow;
             }
             else
             {
@@ -88,7 +89,7 @@ namespace OmegaC.SecurePages
             {
                 RefreshGridView();
                 lblMessage.Text = "New Customer Added";
-                lblMessage.ForeColor = Color.Green;
+                lblMessage.ForeColor = Color.Yellow;
             }
             else
             {
@@ -122,7 +123,7 @@ namespace OmegaC.SecurePages
                 {
                     RefreshGridView();
                     lblMessage.Text = "Customer updated";
-                    lblMessage.ForeColor = Color.Green;
+                    lblMessage.ForeColor = Color.Yellow;
                 }
                 else
                 {
@@ -142,7 +143,7 @@ namespace OmegaC.SecurePages
             {
                 RefreshGridView();
                 lblMessage.Text = "Customer deleted";
-                lblMessage.ForeColor = Color.Green;
+                lblMessage.ForeColor = Color.Yellow;
             }
             else
             {

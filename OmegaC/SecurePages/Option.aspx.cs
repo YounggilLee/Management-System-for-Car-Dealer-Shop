@@ -33,7 +33,7 @@ namespace OmegaC.SecurePages
             grdOptions.DataBind();
 
             lblMessage.Text = "Data loaded";
-            lblMessage.ForeColor = Color.Green;
+            lblMessage.ForeColor = Color.Yellow;
         }
 
         protected void btnLoad_Click(object sender, EventArgs e)
@@ -57,7 +57,7 @@ namespace OmegaC.SecurePages
                 txtCarSerial.Text = InputData.dataInput(row.serial);
 
                 lblMessage.Text = "Record found";
-                lblMessage.ForeColor = Color.Green;
+                lblMessage.ForeColor = Color.Yellow;
             }
             else
             {
@@ -75,7 +75,7 @@ namespace OmegaC.SecurePages
             {
                 RefreshGridView();
                 lblMessage.Text = "New Option Added";
-                lblMessage.ForeColor = Color.Green;
+                lblMessage.ForeColor = Color.Yellow;
             }
             else
             {
@@ -108,7 +108,7 @@ namespace OmegaC.SecurePages
                 {
                     RefreshGridView();
                     lblMessage.Text = "Option updated";
-                    lblMessage.ForeColor = Color.Green;
+                    lblMessage.ForeColor = Color.Yellow;
                 }
                 else
                 {
@@ -131,7 +131,7 @@ namespace OmegaC.SecurePages
                 
                 RefreshGridView();
                 lblMessage.Text = "Option deleted";
-                lblMessage.ForeColor = Color.Green;
+                lblMessage.ForeColor = Color.Yellow;
             }
             else
             {

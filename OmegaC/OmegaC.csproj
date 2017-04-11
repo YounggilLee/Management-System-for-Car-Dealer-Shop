@@ -213,7 +213,7 @@
     <Compile Include="SiteMater.Master.designer.cs">
       <DependentUpon>SiteMater.Master</DependentUpon>
     </Compile>
-    <Compile Include="TrimInput.cs" />
+    <Compile Include="InputData.cs" />
     <Compile Include="UserControls\CalendarUserControl.ascx.cs">
       <DependentUpon>CalendarUserControl.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
