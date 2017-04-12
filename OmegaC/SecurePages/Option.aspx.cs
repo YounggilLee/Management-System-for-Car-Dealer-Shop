@@ -11,29 +11,39 @@ using OmegaC.dsOmegaCTableAdapters;
 
 namespace OmegaC.SecurePages
 {
-    using TableOptions = dsOmegaC.optionsDataTable;
+    using TableOptions = dsOmegaC.optionsDataTable;   
+
     public partial class Option : System.Web.UI.Page
     {
+        
         optionsTableAdapter adpOptions = new optionsTableAdapter();
         TableOptions tblOptions = new TableOptions();
-
+        
+        string cs = Data.GetConnectionString("OmegaWindConnectionString");
+     
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 RefreshGridView();
+                loadCarSerial();
+
             }
+
+          
         }
 
         private void RefreshGridView()
         {
             adpOptions.Fill(tblOptions);  // Fill the data table
             grdOptions.DataSource = tblOptions;
-            grdOptions.DataBind();
+            grdOptions.DataBind();           
 
             lblMessage.Text = "Data loaded";
             lblMessage.ForeColor = Color.Yellow;
+
+
         }
 
         protected void btnLoad_Click(object sender, EventArgs e)
@@ -43,6 +53,7 @@ namespace OmegaC.SecurePages
             // Fill the data table with a row based on the optioncode
             adpOptions.FillBy(tblOptions, optionCode);
 
+          
             // if something was fetched
             if (tblOptions.Rows.Count > 0)
             {
@@ -54,7 +65,7 @@ namespace OmegaC.SecurePages
                 txtOptionCode.Text = InputData.dataInput(row.optionCode);
                 txtOptionPrice.Text = InputData.dataInput(row.optionPrice);
                 txtOptionDesc.Text = InputData.dataInput(row.OptionDesc);              
-                txtCarSerial.Text = InputData.dataInput(row.serial);
+                ddlCarSerials.SelectedIndex = ddlCarSerials.Items.IndexOf(ddlCarSerials.Items.FindByValue(row.serial));
 
                 lblMessage.Text = "Record found";
                 lblMessage.ForeColor = Color.Yellow;
@@ -68,7 +79,7 @@ namespace OmegaC.SecurePages
 
         protected void btnInsert_Click(object sender, EventArgs e)
         {          
-            int result = adpOptions.Insert(txtOptionCode.Text, Convert.ToDecimal(txtOptionPrice.Text), txtOptionDesc.Text, txtCarSerial.Text);
+            int result = adpOptions.Insert(txtOptionCode.Text, Convert.ToDecimal(txtOptionPrice.Text), txtOptionDesc.Text, ddlCarSerials.SelectedItem.Text);
 
 
             if (result == 1)
@@ -82,6 +93,8 @@ namespace OmegaC.SecurePages
                 lblMessage.Text = "New Car not Added";
                 lblMessage.ForeColor = Color.Red;
             }
+
+          
         }
 
         protected void btnUpdate_Click(object sender, EventArgs e)
@@ -99,8 +112,8 @@ namespace OmegaC.SecurePages
                 
                 row.optionCode = txtOptionCode.Text;
                 row.optionPrice = Convert.ToDecimal(txtOptionPrice.Text);
-                row.OptionDesc = txtOptionDesc.Text;
-                row.serial = txtCarSerial.Text;
+                row.OptionDesc = txtOptionDesc.Text;                
+                row.serial = ddlCarSerials.SelectedItem.Text;
 
                 int result = adpOptions.Update(tblOptions);
 
@@ -115,6 +128,7 @@ namespace OmegaC.SecurePages
                     lblMessage.Text = "Option not updated";
                     lblMessage.ForeColor = Color.Red;
                 }
+
             }
         }
 
@@ -139,5 +153,43 @@ namespace OmegaC.SecurePages
                 lblMessage.ForeColor = Color.Red;
             }
         }
+
+     
+
+        // load carserial data on winform from datatable
+        public void loadCarSerial()
+        {
+            string query = "SELECT serial FROM car;";
+
+            using (SqlConnection conn = new SqlConnection(cs))
+            {
+                SqlCommand cmd = new SqlCommand(query, conn);
+                try
+                {
+                    conn.Open();
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    ddlCarSerials.DataSource = reader;
+                    ddlCarSerials.DataTextField = "serial";
+                    ddlCarSerials.DataValueField = "serial";
+                    ddlCarSerials.DataBind();
+                }
+                catch (SqlException sqlEx)
+                {
+
+                    throw new Exception(sqlEx.ToString());
+                }
+                catch (Exception ex)
+                {
+
+                    throw new Exception(ex.ToString());
+                }
+            }
+
+           ListItem liSelected = new ListItem("Select a Car Serial ", "-1");
+           ddlCarSerials.Items.Insert(0, liSelected);           
+        }
+
+
     }
 }

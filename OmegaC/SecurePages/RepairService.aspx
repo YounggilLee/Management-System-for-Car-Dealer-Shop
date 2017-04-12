@@ -62,13 +62,15 @@
             <tr>
                 <td>CustomerID :</td>
                 <td>
-                    <asp:TextBox ID="txtCustomerID" runat="server"></asp:TextBox>
+                    <asp:DropDownList ID="ddlCustomers" runat="server">
+                    </asp:DropDownList>
                 </td>
             </tr>
             <tr>
                 <td>Car&nbsp; Serial :</td>
                 <td>
-                    <asp:TextBox ID="txtCarSerial" runat="server"></asp:TextBox>
+                    <asp:DropDownList ID="ddlCarSerials" runat="server" AutoPostBack="True">
+                    </asp:DropDownList>
                 </td>
             </tr>
             <tr>

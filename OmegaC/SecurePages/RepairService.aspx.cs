@@ -9,7 +9,7 @@ using System.Drawing;
 
 namespace OmegaC.SecurePages
 {
-
+    using System.Data.SqlClient;
     using TableService = dsOmegaC.serviceDataTable;
 
     public partial class RepairService : System.Web.UI.Page
@@ -17,11 +17,15 @@ namespace OmegaC.SecurePages
         serviceTableAdapter adpServices = new serviceTableAdapter();
         TableService tblservices = new TableService();
 
+        string cs = Data.GetConnectionString("OmegaWindConnectionString");
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 RefreshGridView();
+                loadCarSerial();
+                loadCustomerID();
             }
         }
 
@@ -55,8 +59,9 @@ namespace OmegaC.SecurePages
                 txtPartPrice.Text = InputData.dataInput(row.partPrice);
                 txtTax.Text = InputData.dataInput(row.tax);
                 txtWorkDetail.Text = InputData.dataInput(row.info);
-                txtCustomerID.Text = InputData.dataInput(row.customerID);
-                txtCarSerial.Text = InputData.dataInput(row.serial);
+               
+                ddlCustomers.SelectedIndex = ddlCustomers.Items.IndexOf(ddlCustomers.Items.FindByValue(InputData.dataInput(row.customerID)));
+                ddlCarSerials.SelectedIndex = ddlCarSerials.Items.IndexOf(ddlCarSerials.Items.FindByValue(row.serial));
 
                 lblMessage.Text = "Record found";
                 lblMessage.ForeColor = Color.Yellow;
@@ -71,7 +76,7 @@ namespace OmegaC.SecurePages
         protected void btnInsert_Click(object sender, EventArgs e)
         {
             int result = adpServices.Insert(Convert.ToDecimal(txtServiceNumber.Text), Convert.ToDecimal(txtLaborPrice.Text), Convert.ToDecimal(txtPartPrice.Text), Convert.ToDecimal(txtTax.Text),
-                txtWorkDetail.Text, Convert.ToDecimal(txtCustomerID.Text),txtCarSerial.Text);
+                txtWorkDetail.Text, Convert.ToDecimal(ddlCustomers.SelectedItem.Text), ddlCarSerials.SelectedItem.Text);
 
 
             if (result == 1)
@@ -106,8 +111,8 @@ namespace OmegaC.SecurePages
                 row.partPrice = Convert.ToDecimal(txtPartPrice.Text);
                 row.tax = Convert.ToDecimal(txtTax.Text);
                 row.info = txtWorkDetail.Text;
-                row.customerID = Convert.ToDecimal(txtCustomerID.Text);
-                row.serial = txtCarSerial.Text;
+                row.customerID = Convert.ToDecimal(ddlCustomers.SelectedItem.Text);
+                row.serial = ddlCarSerials.SelectedItem.Text;
 
 
                 int result = adpServices.Update(tblservices);
@@ -145,5 +150,74 @@ namespace OmegaC.SecurePages
                 lblMessage.ForeColor = Color.Red;
             }
         }
+
+        // load carserial data on winform from datatable
+        public void loadCarSerial()
+        {
+            string query = "SELECT serial FROM car;";
+
+            using (SqlConnection conn = new SqlConnection(cs))
+            {
+                SqlCommand cmd = new SqlCommand(query, conn);
+                try
+                {
+                    conn.Open();
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    ddlCarSerials.DataSource = reader;
+                    ddlCarSerials.DataTextField = "serial";
+                    ddlCarSerials.DataValueField = "serial";
+                    ddlCarSerials.DataBind();
+                }
+                catch (SqlException sqlEx)
+                {
+
+                    throw new Exception(sqlEx.ToString());
+                }
+                catch (Exception ex)
+                {
+
+                    throw new Exception(ex.ToString());
+                }
+            }
+
+            ListItem liSelected = new ListItem("Select a Car Serial ", "-1");
+            ddlCarSerials.Items.Insert(0, liSelected);
+        }
+
+        // load Customers data on winform from datatable
+        public void loadCustomerID()
+        {
+            string query = "SELECT customerID FROM customer;";
+
+            using (SqlConnection conn = new SqlConnection(cs))
+            {
+                SqlCommand cmd = new SqlCommand(query, conn);
+                try
+                {
+                    conn.Open();
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    ddlCustomers.DataSource = reader;
+                    ddlCustomers.DataTextField = "customerID";
+                    ddlCustomers.DataValueField = "customerID";
+                    ddlCustomers.DataBind();
+                }
+                catch (SqlException sqlEx)
+                {
+
+                    throw new Exception(sqlEx.ToString());
+                }
+                catch (Exception ex)
+                {
+
+                    throw new Exception(ex.ToString());
+                }
+            }
+
+            ListItem liSelected = new ListItem("Select a CustomerID ", "-1");
+            ddlCustomers.Items.Insert(0, liSelected);
+        }
+
     }
 }

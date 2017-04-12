@@ -9,6 +9,7 @@ using OmegaC.dsOmegaCTableAdapters;
 
 namespace OmegaC.SecurePages
 {
+    using System.Data.SqlClient;
     using System.Drawing;
     using TableInvoices = dsOmegaC.invoiceDataTable;
 
@@ -17,11 +18,16 @@ namespace OmegaC.SecurePages
         invoiceTableAdapter adpInvoices = new invoiceTableAdapter();
         TableInvoices tblInvoices = new TableInvoices();
 
+        string cs = Data.GetConnectionString("OmegaWindConnectionString");
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 RefreshGridView();
+                loadCarSerial();
+                loadCustomerID();
+                loadEmplyoeeID();
             }
         }
 
@@ -55,10 +61,12 @@ namespace OmegaC.SecurePages
                 CalendarUserControl1.SelectedDate = row.invDate.ToString();
                 txtNetPrice.Text = InputData.dataInput(row.netPrice);
                 txtTax.Text = InputData.dataInput(row.tax);
-                txtOtherFees.Text = InputData.dataInput(row.otherFees);
-                txtCustomerID.Text = InputData.dataInput(row.customerID);
-                txtCarSerial.Text = InputData.dataInput(row.serial);
-                txtEmployeeID.Text = InputData.dataInput(row.employeeID);
+                txtOtherFees.Text = InputData.dataInput(row.otherFees);   
+
+
+                ddlCustomers.SelectedIndex = ddlCustomers.Items.IndexOf(ddlCustomers.Items.FindByValue(InputData.dataInput(row.customerID)));
+                ddlCarSerials.SelectedIndex = ddlCarSerials.Items.IndexOf(ddlCarSerials.Items.FindByValue(row.serial));
+                ddlEmployees.SelectedIndex = ddlEmployees.Items.IndexOf(ddlEmployees.Items.FindByValue(InputData.dataInput(row.employeeID)));
 
                 lblMessage.Text = "Record found";
                 lblMessage.ForeColor = Color.Yellow;
@@ -72,7 +80,7 @@ namespace OmegaC.SecurePages
 
         protected void btnInsert_Click(object sender, EventArgs e)
         {
-            int result = adpInvoices.Insert(Convert.ToDecimal(txtInvoiceNumber.Text), Convert.ToDateTime(CalendarUserControl1.SelectedDate), Convert.ToDecimal(txtNetPrice.Text), Convert.ToDecimal(txtTax.Text), Convert.ToDecimal(txtOtherFees.Text), Convert.ToDecimal(txtCustomerID.Text), txtCarSerial.Text, Convert.ToDecimal(txtEmployeeID.Text));
+            int result = adpInvoices.Insert(Convert.ToDecimal(txtInvoiceNumber.Text), Convert.ToDateTime(CalendarUserControl1.SelectedDate), Convert.ToDecimal(txtNetPrice.Text), Convert.ToDecimal(txtTax.Text), Convert.ToDecimal(txtOtherFees.Text), Convert.ToDecimal(ddlCustomers.SelectedItem.Text), ddlCarSerials.SelectedItem.Text, Convert.ToDecimal(ddlEmployees.SelectedItem.Text));
 
 
             if (result == 1)
@@ -105,9 +113,9 @@ namespace OmegaC.SecurePages
                 row.netPrice = Convert.ToDecimal(txtNetPrice.Text);
                 row.tax = Convert.ToDecimal(txtTax.Text);
                 row.otherFees = Convert.ToDecimal(txtOtherFees.Text);
-                row.customerID = Convert.ToDecimal(txtCustomerID.Text);
-                row.serial = txtCarSerial.Text;
-                row.employeeID = Convert.ToDecimal(txtEmployeeID.Text);
+                row.customerID = Convert.ToDecimal(ddlCustomers.SelectedItem.Text);
+                row.serial = ddlCarSerials.SelectedItem.Text;
+                row.employeeID = Convert.ToDecimal(ddlEmployees.SelectedItem.Text);
 
                 int result = adpInvoices.Update(tblInvoices);
 
@@ -143,5 +151,108 @@ namespace OmegaC.SecurePages
                 lblMessage.ForeColor = Color.Red;
             }
         }
+
+        // load carserial data on winform from datatable
+        public void loadCarSerial()
+        {
+            string query = "SELECT serial FROM car;";
+
+            using (SqlConnection conn = new SqlConnection(cs))
+            {
+                SqlCommand cmd = new SqlCommand(query, conn);
+                try
+                {
+                    conn.Open();
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    ddlCarSerials.DataSource = reader;
+                    ddlCarSerials.DataTextField = "serial";
+                    ddlCarSerials.DataValueField = "serial";
+                    ddlCarSerials.DataBind();
+                }
+                catch (SqlException sqlEx)
+                {
+
+                    throw new Exception(sqlEx.ToString());
+                }
+                catch (Exception ex)
+                {
+
+                    throw new Exception(ex.ToString());
+                }
+            }
+
+            ListItem liSelected = new ListItem("Select a Car Serial ", "-1");
+            ddlCarSerials.Items.Insert(0, liSelected);
+        }
+
+        // load Customers data on winform from datatable
+        public void loadCustomerID()
+        {
+            string query = "SELECT customerID FROM customer;";
+
+            using (SqlConnection conn = new SqlConnection(cs))
+            {
+                SqlCommand cmd = new SqlCommand(query, conn);
+                try
+                {
+                    conn.Open();
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    ddlCustomers.DataSource = reader;
+                    ddlCustomers.DataTextField = "customerID";
+                    ddlCustomers.DataValueField = "customerID";
+                    ddlCustomers.DataBind();
+                }
+                catch (SqlException sqlEx)
+                {
+
+                    throw new Exception(sqlEx.ToString());
+                }
+                catch (Exception ex)
+                {
+
+                    throw new Exception(ex.ToString());
+                }
+            }
+
+            ListItem liSelected = new ListItem("Select a CustomerID ", "-1");
+            ddlCustomers.Items.Insert(0, liSelected);
+        }
+
+        // load Customers data on winform from datatable
+        public void loadEmplyoeeID()
+        {
+            string query = "SELECT employeeID FROM employee;";
+
+            using (SqlConnection conn = new SqlConnection(cs))
+            {
+                SqlCommand cmd = new SqlCommand(query, conn);
+                try
+                {
+                    conn.Open();
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    ddlEmployees.DataSource = reader;
+                    ddlEmployees.DataTextField = "employeeID";
+                    ddlEmployees.DataValueField = "employeeID";
+                    ddlEmployees.DataBind();
+                }
+                catch (SqlException sqlEx)
+                {
+
+                    throw new Exception(sqlEx.ToString());
+                }
+                catch (Exception ex)
+                {
+
+                    throw new Exception(ex.ToString());
+                }
+            }
+
+            ListItem liSelected = new ListItem("Select a EmployessID ", "-1");
+            ddlEmployees.Items.Insert(0, liSelected);
+        }
+
     }
 }

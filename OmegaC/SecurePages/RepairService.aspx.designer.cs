@@ -85,22 +85,22 @@ namespace OmegaC.SecurePages {
         protected global::System.Web.UI.WebControls.TextBox txtWorkDetail;
         
         /// <summary>
-        /// txtCustomerID control.
+        /// ddlCustomers control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCustomerID;
+        protected global::System.Web.UI.WebControls.DropDownList ddlCustomers;
         
         /// <summary>
-        /// txtCarSerial control.
+        /// ddlCarSerials control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCarSerial;
+        protected global::System.Web.UI.WebControls.DropDownList ddlCarSerials;
         
         /// <summary>
         /// btnInsert control.

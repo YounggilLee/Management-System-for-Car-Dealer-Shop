@@ -17,7 +17,8 @@ namespace OmegaC.UserControls
             {
                 lblMessage.Text = "Login User ID :";
                 lblUserName.Text =  Session["userName"].ToString();
-                lblUserName.ForeColor = Color.Yellow;                
+                lblUserName.ForeColor = Color.Yellow;
+                lblMessage.ForeColor = Color.WhiteSmoke;
                 btnLogOut.Visible = true;
 
             }

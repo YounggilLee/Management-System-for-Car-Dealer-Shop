@@ -11,11 +11,7 @@
         .auto-style2 {
             height: 26px;
         }
-        .auto-style3 {
-            color: #0000FF;
-            text-decoration: underline;
-        }
-    </style>
+        </style>
     <link rel="stylesheet" type="text/css" href="~/Styles/Styles.css">
 </head>
 <body>
@@ -53,7 +49,8 @@
             <tr>
                 <td class="auto-style2">Car&nbsp; Serial:</td>
                 <td class="auto-style2">
-                    <asp:TextBox ID="txtCarSerial" runat="server"></asp:TextBox>
+                    <asp:DropDownList ID="ddlCarSerials" runat="server" AutoPostBack="True">
+                    </asp:DropDownList>
                 </td>
             </tr>
             <tr>

@@ -81,19 +81,22 @@
             <tr>
                 <td>Customer&nbsp; ID:</td>
                 <td class="auto-style4">
-                    <asp:TextBox ID="txtCustomerID" runat="server"></asp:TextBox>
+                    <asp:DropDownList ID="ddlCustomers" runat="server" AutoPostBack="True">
+                    </asp:DropDownList>
                 </td>
             </tr>
             <tr>
                 <td>Car&nbsp; serial:</td>
                 <td class="auto-style4">
-                    <asp:TextBox ID="txtCarSerial" runat="server"></asp:TextBox>
+                    <asp:DropDownList ID="ddlCarSerials" runat="server" AutoPostBack="True">
+                    </asp:DropDownList>
                 </td>
             </tr>
             <tr>
                 <td class="auto-style3">EmployeeID</td>
                 <td class="auto-style5">
-                    <asp:TextBox ID="txtEmployeeID" runat="server"></asp:TextBox>
+                    <asp:DropDownList ID="ddlEmployees" runat="server" AutoPostBack="True">
+                    </asp:DropDownList>
                 </td>
             </tr>
             <tr>
