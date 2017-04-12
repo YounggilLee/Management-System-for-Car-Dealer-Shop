@@ -6,19 +6,26 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using OmegaC.dsOmegaCTableAdapters;
 using System.Drawing;
+using System.Data.SqlClient;
 
 namespace OmegaC.SecurePages
 {
-    using System.Data.SqlClient;
+   
     using TableService = dsOmegaC.serviceDataTable;
+    using TableCars = dsOmegaC.carDataTable;
+    using TableCustomers = dsOmegaC.customerDataTable;
+    
 
     public partial class RepairService : System.Web.UI.Page
     {
         serviceTableAdapter adpServices = new serviceTableAdapter();
+        carTableAdapter adpCars = new carTableAdapter();
+        customerTableAdapter adpCustomers = new customerTableAdapter();
+
         TableService tblservices = new TableService();
-
-        string cs = Data.GetConnectionString("OmegaWindConnectionString");
-
+        TableCars tblCars = new TableCars();
+        TableCustomers tblCustomers= new TableCustomers();
+     
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -154,32 +161,11 @@ namespace OmegaC.SecurePages
         // load carserial data on winform from datatable
         public void loadCarSerial()
         {
-            string query = "SELECT serial FROM car;";
-
-            using (SqlConnection conn = new SqlConnection(cs))
-            {
-                SqlCommand cmd = new SqlCommand(query, conn);
-                try
-                {
-                    conn.Open();
-                    SqlDataReader reader = cmd.ExecuteReader();
-
-                    ddlCarSerials.DataSource = reader;
-                    ddlCarSerials.DataTextField = "serial";
-                    ddlCarSerials.DataValueField = "serial";
-                    ddlCarSerials.DataBind();
-                }
-                catch (SqlException sqlEx)
-                {
-
-                    throw new Exception(sqlEx.ToString());
-                }
-                catch (Exception ex)
-                {
-
-                    throw new Exception(ex.ToString());
-                }
-            }
+            adpCars.FillBySerial(tblCars);  // Fill the data table           
+            ddlCarSerials.DataSource = tblCars.Rows;
+            ddlCarSerials.DataTextField = "serial";
+            ddlCarSerials.DataValueField = "serial";
+            ddlCarSerials.DataBind();        
 
             ListItem liSelected = new ListItem("Select a Car Serial ", "-1");
             ddlCarSerials.Items.Insert(0, liSelected);
@@ -188,32 +174,11 @@ namespace OmegaC.SecurePages
         // load Customers data on winform from datatable
         public void loadCustomerID()
         {
-            string query = "SELECT customerID FROM customer;";
-
-            using (SqlConnection conn = new SqlConnection(cs))
-            {
-                SqlCommand cmd = new SqlCommand(query, conn);
-                try
-                {
-                    conn.Open();
-                    SqlDataReader reader = cmd.ExecuteReader();
-
-                    ddlCustomers.DataSource = reader;
-                    ddlCustomers.DataTextField = "customerID";
-                    ddlCustomers.DataValueField = "customerID";
-                    ddlCustomers.DataBind();
-                }
-                catch (SqlException sqlEx)
-                {
-
-                    throw new Exception(sqlEx.ToString());
-                }
-                catch (Exception ex)
-                {
-
-                    throw new Exception(ex.ToString());
-                }
-            }
+            adpCustomers.FillByCust(tblCustomers);  // Fill the data table           
+            ddlCustomers.DataSource = tblCustomers.Rows;
+            ddlCustomers.DataTextField = "customerID";
+            ddlCustomers.DataValueField = "customerID";
+            ddlCustomers.DataBind();
 
             ListItem liSelected = new ListItem("Select a CustomerID ", "-1");
             ddlCustomers.Items.Insert(0, liSelected);

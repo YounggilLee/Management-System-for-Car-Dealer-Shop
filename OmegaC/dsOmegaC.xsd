@@ -72,6 +72,15 @@ WHERE        (serial = @serial)</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
+              <DbSource ConnectionRef="OmegaWindConnectionString (Web.config)" DbObjectName="dbo.car" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillBySerial" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBySerial" GeneratorSourceName="FillBySerial" GetMethodModifier="Public" GetMethodName="GetDataBySerial" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBySerial" UserSourceName="FillBySerial">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        car.*
+FROM            car</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
             </Sources>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="customerTableAdapter" GeneratorDataComponentClassName="customerTableAdapter" Name="customer" UserDataComponentName="customerTableAdapter">
@@ -134,6 +143,15 @@ WHERE        (customerID = @customerID)</CommandText>
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        customer.*
+FROM            customer</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="OmegaWindConnectionString (Web.config)" DbObjectName="dbo.customer" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillByCust" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataByCust" GeneratorSourceName="FillByCust" GetMethodModifier="Public" GetMethodName="GetDataByCust" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataByCust" UserSourceName="FillByCust">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        customerID
 FROM            customer</CommandText>
                     <Parameters />
                   </DbCommand>

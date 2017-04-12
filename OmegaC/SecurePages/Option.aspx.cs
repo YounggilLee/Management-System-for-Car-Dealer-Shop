@@ -11,16 +11,19 @@ using OmegaC.dsOmegaCTableAdapters;
 
 namespace OmegaC.SecurePages
 {
-    using TableOptions = dsOmegaC.optionsDataTable;   
+    using TableOptions = dsOmegaC.optionsDataTable;
+    using TableCars = dsOmegaC.carDataTable;
 
     public partial class Option : System.Web.UI.Page
     {
-        
+        carTableAdapter adpCars = new carTableAdapter();   
         optionsTableAdapter adpOptions = new optionsTableAdapter();
+
         TableOptions tblOptions = new TableOptions();
-        
-        string cs = Data.GetConnectionString("OmegaWindConnectionString");
-     
+        TableCars tblCars = new TableCars();
+
+       // string cs = Data.GetConnectionString("OmegaWindConnectionString");
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -38,7 +41,8 @@ namespace OmegaC.SecurePages
         {
             adpOptions.Fill(tblOptions);  // Fill the data table
             grdOptions.DataSource = tblOptions;
-            grdOptions.DataBind();           
+            grdOptions.DataBind();
+            
 
             lblMessage.Text = "Data loaded";
             lblMessage.ForeColor = Color.Yellow;
@@ -52,8 +56,9 @@ namespace OmegaC.SecurePages
 
             // Fill the data table with a row based on the optioncode
             adpOptions.FillBy(tblOptions, optionCode);
-
+            
           
+
             // if something was fetched
             if (tblOptions.Rows.Count > 0)
             {
@@ -159,35 +164,15 @@ namespace OmegaC.SecurePages
         // load carserial data on winform from datatable
         public void loadCarSerial()
         {
-            string query = "SELECT serial FROM car;";
+            adpCars.FillBySerial(tblCars);  // Fill the data table           
+            ddlCarSerials.DataSource = tblCars.Rows;
+            ddlCarSerials.DataTextField = "serial";
+            ddlCarSerials.DataValueField = "serial";
+            ddlCarSerials.DataBind();
 
-            using (SqlConnection conn = new SqlConnection(cs))
-            {
-                SqlCommand cmd = new SqlCommand(query, conn);
-                try
-                {
-                    conn.Open();
-                    SqlDataReader reader = cmd.ExecuteReader();
+            ListItem liSelected = new ListItem("Select a Car Serial ", "-1");
+            ddlCarSerials.Items.Insert(0, liSelected);
 
-                    ddlCarSerials.DataSource = reader;
-                    ddlCarSerials.DataTextField = "serial";
-                    ddlCarSerials.DataValueField = "serial";
-                    ddlCarSerials.DataBind();
-                }
-                catch (SqlException sqlEx)
-                {
-
-                    throw new Exception(sqlEx.ToString());
-                }
-                catch (Exception ex)
-                {
-
-                    throw new Exception(ex.ToString());
-                }
-            }
-
-           ListItem liSelected = new ListItem("Select a Car Serial ", "-1");
-           ddlCarSerials.Items.Insert(0, liSelected);           
         }
 
 
