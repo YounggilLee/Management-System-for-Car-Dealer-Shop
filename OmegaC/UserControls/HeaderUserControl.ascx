@@ -17,7 +17,7 @@
 <p style="text-align:right">
     <asp:Label ID="lblMessage" runat="server"></asp:Label>
     <asp:Label ID="lblUserName" runat="server"></asp:Label>
-    <asp:Button ID="btnLogOut" runat="server" OnClick="btnLogOut_Click" Text="LogOut" />
+    <asp:Button ID="btnLogOut" runat="server" OnClick="btnLogOut_Click" Text="LogOut" CausesValidation="False" />
 </p>
 
 <div style="margin:0 auto 0 auto; " class="auto-style1">

@@ -30,10 +30,12 @@ namespace OmegaC.UserControls
 
         protected void btnLogOut_Click(object sender, EventArgs e)
         {
-            Session.Clear();
-            //Session.Abondon();
+            Session.Clear();           
             FormsAuthentication.SignOut();
             Response.Redirect("~/Login.aspx");
         }
+
+
+       
     }
 }

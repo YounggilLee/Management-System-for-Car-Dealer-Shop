@@ -154,6 +154,8 @@ namespace OmegaC.SecurePages
 
         protected void btnInsert_Click(object sender, EventArgs e)
         {
+
+            try { 
             DataTable tblEmployee = (DataTable)Cache["tblemployee"];
 
             DataRow newRow = tblEmployee.NewRow();  // create a new row
@@ -180,7 +182,38 @@ namespace OmegaC.SecurePages
                 lblMessage.Text = "New Employee is not inserted";
                 lblMessage.ForeColor = Color.Red;
             }
+            clearTextBox();
+
         }
+            catch (SqlException sqlEx)
+            {
+                msgBox(sqlEx.ToString());
+            }
+            catch (Exception ex)
+            {
+
+                msgBox("Check the input");
+}
+        }
+
+
+        private void clearTextBox()
+        {
+            txtEmployeeID.Text = string.Empty;
+            txtFirstName.Text = string.Empty;
+            txtLastName.Text = string.Empty;
+            txtSalary.Text = string.Empty;
+            txtCommission.Text = string.Empty;
+
+        }
+
+        //create by choongwon
+        public void msgBox(string msg)
+        {
+
+            Page.ClientScript.RegisterStartupScript(Page.GetType(), "Message Box", "<script language='javascript'>alert('" + msg + "')</script>");
+        }
+
     }
 
 }

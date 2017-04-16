@@ -10,7 +10,7 @@ using System.Drawing;
 
 namespace OmegaC.SecurePages
 {
-    
+
     using TableInvoices = dsOmegaC.invoiceDataTable;
     using TableCars = dsOmegaC.carDataTable;
     using TableCustomers = dsOmegaC.customerDataTable;
@@ -26,6 +26,8 @@ namespace OmegaC.SecurePages
         TableCustomers tblCustomers = new TableCustomers();
 
         string cs = Data.GetConnectionString("OmegaWindConnectionString");
+
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -64,11 +66,11 @@ namespace OmegaC.SecurePages
                 var row = tblInvoices[0];
 
                 // assign the values from the row to the textboxes
-                txtInvoiceNumber.Text =InputData.dataInput(row.invNum);
+                txtInvoiceNumber.Text = InputData.dataInput(row.invNum);
                 CalendarUserControl1.SelectedDate = row.invDate.ToString();
                 txtNetPrice.Text = InputData.dataInput(row.netPrice);
                 txtTax.Text = InputData.dataInput(row.tax);
-                txtOtherFees.Text = InputData.dataInput(row.otherFees);   
+                txtOtherFees.Text = InputData.dataInput(row.otherFees);
 
 
                 ddlCustomers.SelectedIndex = ddlCustomers.Items.IndexOf(ddlCustomers.Items.FindByValue(InputData.dataInput(row.customerID)));
@@ -87,79 +89,121 @@ namespace OmegaC.SecurePages
 
         protected void btnInsert_Click(object sender, EventArgs e)
         {
-            int result = adpInvoices.Insert(Convert.ToDecimal(txtInvoiceNumber.Text), Convert.ToDateTime(CalendarUserControl1.SelectedDate), Convert.ToDecimal(txtNetPrice.Text), Convert.ToDecimal(txtTax.Text), Convert.ToDecimal(txtOtherFees.Text), Convert.ToDecimal(ddlCustomers.SelectedItem.Text), ddlCarSerials.SelectedItem.Text, Convert.ToDecimal(ddlEmployees.SelectedItem.Text));
-
-
-            if (result == 1)
+            try
             {
-                RefreshGridView();
-                lblMessage.Text = "New Customer Added";
-                lblMessage.ForeColor = Color.Yellow;
+                int result = adpInvoices.Insert(Convert.ToDecimal(txtInvoiceNumber.Text), Convert.ToDateTime(CalendarUserControl1.SelectedDate), Convert.ToDecimal(txtNetPrice.Text), Convert.ToDecimal(txtTax.Text), Convert.ToDecimal(txtOtherFees.Text), Convert.ToDecimal(ddlCustomers.SelectedItem.Text), ddlCarSerials.SelectedItem.Text, Convert.ToDecimal(ddlEmployees.SelectedItem.Text));
+
+
+                if (result == 1)
+                {
+                    RefreshGridView();
+                    lblMessage.Text = "New Customer Added";
+                    lblMessage.ForeColor = Color.Yellow;
+                }
+                else
+                {
+                    lblMessage.Text = "New Customer not Added";
+                    lblMessage.ForeColor = Color.Red;
+                }
+
+                clearTextBox();
             }
-            else
+            catch (SqlException sqlEx)
             {
-                lblMessage.Text = "New Customer not Added";
-                lblMessage.ForeColor = Color.Red;
+                msgBox(sqlEx.ToString());
+            }
+            catch (Exception ex)
+            {
+
+                msgBox("Check the input");
             }
         }
 
         protected void btnUpdate_Click(object sender, EventArgs e)
         {
-            Decimal invoiceNumber = Convert.ToDecimal(txtInvoiceNumber.Text);
-
-            // Fill the data table with a row based on the invoice number
-            adpInvoices.FillBy(tblInvoices, invoiceNumber);
-
-            // if something was fetched
-            if (tblInvoices.Rows.Count > 0)
+            try
             {
-                // assign the row to the Row object
-                var row = tblInvoices[0];
-                row.invNum = Convert.ToDecimal(txtInvoiceNumber.Text);
-                row.invDate = Convert.ToDateTime(CalendarUserControl1.SelectedDate);
-                row.netPrice = Convert.ToDecimal(txtNetPrice.Text);
-                row.tax = Convert.ToDecimal(txtTax.Text);
-                row.otherFees = Convert.ToDecimal(txtOtherFees.Text);
-                row.customerID = Convert.ToDecimal(ddlCustomers.SelectedItem.Text);
-                row.serial = ddlCarSerials.SelectedItem.Text;
-                row.employeeID = Convert.ToDecimal(ddlEmployees.SelectedItem.Text);
+                Decimal invoiceNumber = Convert.ToDecimal(txtInvoiceNumber.Text);
 
-                int result = adpInvoices.Update(tblInvoices);
+                // Fill the data table with a row based on the invoice number
+                adpInvoices.FillBy(tblInvoices, invoiceNumber);
 
-                if (result == 1)
+                // if something was fetched
+                if (tblInvoices.Rows.Count > 0)
                 {
-                    RefreshGridView();
-                    lblMessage.Text = "Invoice updated";
-                    lblMessage.ForeColor = Color.Yellow;
+                    // assign the row to the Row object
+                    var row = tblInvoices[0];
+                    row.invNum = Convert.ToDecimal(txtInvoiceNumber.Text);
+                    row.invDate = Convert.ToDateTime(CalendarUserControl1.SelectedDate);
+                    row.netPrice = Convert.ToDecimal(txtNetPrice.Text);
+                    row.tax = Convert.ToDecimal(txtTax.Text);
+                    row.otherFees = Convert.ToDecimal(txtOtherFees.Text);
+                    row.customerID = Convert.ToDecimal(ddlCustomers.SelectedItem.Text);
+                    row.serial = ddlCarSerials.SelectedItem.Text;
+                    row.employeeID = Convert.ToDecimal(ddlEmployees.SelectedItem.Text);
+
+                    int result = adpInvoices.Update(tblInvoices);
+
+                    if (result == 1)
+                    {
+                        RefreshGridView();
+                        lblMessage.Text = "Invoice updated";
+                        lblMessage.ForeColor = Color.Yellow;
+                    }
+                    else
+                    {
+                        lblMessage.Text = "Invoice not updated";
+                        lblMessage.ForeColor = Color.Red;
+                    }
+
                 }
-                else
-                {
-                    lblMessage.Text = "Invoice not updated";
-                    lblMessage.ForeColor = Color.Red;
-                }
+                clearTextBox();
+            }
+            catch (SqlException sqlEx)
+            {
+                msgBox(sqlEx.ToString());
+            }
+            catch (Exception ex)
+            {
+
+                msgBox("Check the input");
             }
         }
 
         protected void btnDelete_Click(object sender, EventArgs e)
         {
-            Decimal invoiceNumber = Convert.ToDecimal(txtInvoiceNumber.Text);
-
-            int result = adpInvoices.Delete(invoiceNumber);
-
-            if (result == 1)
+            try
             {
-                RefreshGridView();
-                lblMessage.Text = "Invoice deleted";
-                lblMessage.ForeColor = Color.Yellow;
+                Decimal invoiceNumber = Convert.ToDecimal(txtInvoiceNumber.Text);
+
+                int result = adpInvoices.Delete(invoiceNumber);
+
+                if (result == 1)
+                {
+                    RefreshGridView();
+                    lblMessage.Text = "Invoice deleted";
+                    lblMessage.ForeColor = Color.Yellow;
+                }
+                else
+                {
+                    lblMessage.Text = "Invoice not deleted";
+                    lblMessage.ForeColor = Color.Red;
+                }
+                clearTextBox();
+
             }
-            else
+            catch (SqlException sqlEx)
             {
-                lblMessage.Text = "Invoice not deleted";
-                lblMessage.ForeColor = Color.Red;
+                msgBox(sqlEx.ToString());
+            }
+            catch (Exception ex)
+            {
+
+                msgBox("Check the input");
             }
         }
 
-        // load carserial data on winform from datatable
+
         public void loadCarSerial()
         {
             adpCars.FillBySerial(tblCars);  // Fill the data table           
@@ -170,7 +214,7 @@ namespace OmegaC.SecurePages
 
             ListItem liSelected = new ListItem("Select a Car Serial ", "-1");
             ddlCarSerials.Items.Insert(0, liSelected);
-      
+
         }
 
         // load Customers data on winform from datatable
@@ -182,7 +226,7 @@ namespace OmegaC.SecurePages
             ddlCustomers.DataValueField = "customerID";
             ddlCustomers.DataBind();
 
-            ListItem liSelected = new ListItem("Select a CustomerID ", "-1");
+            ListItem liSelected = new ListItem("Select a CustomerID", "-1");
             ddlCustomers.Items.Insert(0, liSelected);
         }
 
@@ -215,9 +259,31 @@ namespace OmegaC.SecurePages
                     throw new Exception(ex.ToString());
                 }
             }
-
-            ListItem liSelected = new ListItem("Select a EmployessID ", "-1");
+            ListItem liSelected = new ListItem("Select a EmployeeID", "-1");
             ddlEmployees.Items.Insert(0, liSelected);
+        }
+
+
+
+        private void clearTextBox()
+        {
+
+            txtInvoiceNumber.Text = string.Empty;
+            txtNetPrice.Text = string.Empty;
+            txtTax.Text = string.Empty;
+            txtOtherFees.Text = string.Empty;
+            ddlCarSerials.SelectedValue = "-1";
+            ddlCustomers.SelectedValue = "-1";
+            ddlEmployees.SelectedValue = "-1";
+            CalendarUserControl1.SelectedDate = string.Empty;
+
+        }
+
+        //create by choongwon
+        public void msgBox(string msg)
+        {
+
+            Page.ClientScript.RegisterStartupScript(Page.GetType(), "Message Box", "<script language='javascript'>alert('" + msg + "')</script>");
         }
 
     }

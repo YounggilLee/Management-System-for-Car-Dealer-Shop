@@ -26,6 +26,8 @@
                 <td colspan="2">
                     <h3 style="text-decoration: underline; color: #0000FF;">Customer Management System</h3>
                 </td>
+                <td>
+                    &nbsp;</td>
             </tr>
             <tr>
                 <td>Customer&nbsp; ID:</td>
@@ -33,32 +35,44 @@
                     <asp:TextBox ID="txtCustomerID" runat="server" Width="63px"></asp:TextBox>
                     &nbsp;<asp:Button ID="btnLoad" runat="server" OnClick="btnLoad_Click" Text="Load" BackColor="#CCFF33" />
                 </td>
+                <td>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtCustomerID" ErrorMessage="CustomerID is Required" ForeColor="Red"></asp:RequiredFieldValidator>
+                </td>
             </tr>
             <tr>
                 <td>First&nbsp;&nbsp; Name:</td>
                 <td>
                     <asp:TextBox ID="txtFirstName" runat="server"></asp:TextBox>
                 </td>
+                <td>
+                    &nbsp;</td>
             </tr>
             <tr>
                 <td>Last&nbsp;&nbsp; Name:</td>
                 <td>
                     <asp:TextBox ID="txtLastName" runat="server"></asp:TextBox>
                 </td>
+                <td>
+                    &nbsp;</td>
             </tr>
             <tr>
                 <td>Address&nbsp; :</td>
                 <td>
                     <asp:TextBox ID="txtAddress" runat="server"></asp:TextBox>
                 </td>
+                <td>
+                    &nbsp;</td>
             </tr>
             <tr>
                 <td>Phone&nbsp;&nbsp; :</td>
                 <td>
                     <asp:TextBox ID="txtPhone" runat="server"></asp:TextBox>
                 </td>
+                <td>
+                    &nbsp;</td>
             </tr>
             <tr>
+                <td>&nbsp;</td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
             </tr>
@@ -68,8 +82,11 @@
                     &nbsp;<asp:Button ID="btnUpdate" runat="server" OnClick="btnUpdate_Click" Text="Update" BackColor="Yellow" />
                     &nbsp;<asp:Button ID="btnDelete" runat="server" OnClick="btnDelete_Click" Text="Delete" BackColor="#FF0066" />
                 </td>
+                <td>
+                    &nbsp;</td>
             </tr>
             <tr>
+                <td>&nbsp;</td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
             </tr>
@@ -77,6 +94,8 @@
                 <td colspan="2">
                     <asp:Label ID="lblMessage" runat="server"></asp:Label>
                 </td>
+                <td>
+                    &nbsp;</td>
             </tr>
         </table>
         <br />

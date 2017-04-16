@@ -21,6 +21,8 @@
                 <td colspan="2">
                     <h3 style="text-decoration: underline; color: #0000FF;">Car Management System&nbsp;</h3>
                 </td>
+                <td>
+                    &nbsp;</td>
             </tr>
             <tr>
                 <td>Car&nbsp; Serial:</td>
@@ -28,32 +30,44 @@
                     <asp:TextBox ID="txtCarSerial" runat="server" Width="63px"></asp:TextBox>
                     &nbsp;<asp:Button ID="btnLoad" runat="server" OnClick="btnLoad_Click" Text="Load" BackColor="#66FF33" />
                 </td>
+                <td>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtCarSerial" ErrorMessage="Serial is Required" ForeColor="Red"></asp:RequiredFieldValidator>
+                </td>
             </tr>
             <tr>
                 <td>Car&nbsp; Make:</td>
                 <td>
                     <asp:TextBox ID="txtCarMake" runat="server"></asp:TextBox>
                 </td>
+                <td>
+                    &nbsp;</td>
             </tr>
             <tr>
                 <td>Car&nbsp; Model:</td>
                 <td>
                     <asp:TextBox ID="txtCarModel" runat="server"></asp:TextBox>
                 </td>
+                <td>
+                    &nbsp;</td>
             </tr>
             <tr>
                 <td>Car&nbsp; Year:</td>
                 <td>
                     <asp:TextBox ID="txtCarYear" runat="server"></asp:TextBox>
                 </td>
+                <td>
+                    &nbsp;</td>
             </tr>
             <tr>
                 <td>Car&nbsp; Price:</td>
                 <td>
                     <asp:TextBox ID="txtCarPrice" runat="server"></asp:TextBox>
                 </td>
+                <td>
+                    &nbsp;</td>
             </tr>
             <tr>
+                <td>&nbsp;</td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
             </tr>
@@ -63,15 +77,20 @@
                     &nbsp;<asp:Button ID="btnUpdate" runat="server" OnClick="btnUpdate_Click" Text="Update" BackColor="Yellow" />
                     &nbsp;<asp:Button ID="btnDelete" runat="server" OnClick="btnDelete_Click" Text="Delete" BackColor="#FF5050" />
                 </td>
+                <td>
+                    &nbsp;</td>
             </tr>
             <tr>
                 <td>&nbsp;</td>
                 <td style="text-decoration: underline"></td>
+                <td style="text-decoration: underline">&nbsp;</td>
             </tr>
             <tr>
                 <td colspan="2">
                     <asp:Label ID="lblMessage" runat="server"></asp:Label>
                 </td>
+                <td>
+                    &nbsp;</td>
             </tr>
         </table>
         <br />

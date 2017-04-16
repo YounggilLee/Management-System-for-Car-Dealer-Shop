@@ -16,13 +16,13 @@ namespace OmegaC.SecurePages
 
     public partial class Option : System.Web.UI.Page
     {
-        carTableAdapter adpCars = new carTableAdapter();   
+        carTableAdapter adpCars = new carTableAdapter();
         optionsTableAdapter adpOptions = new optionsTableAdapter();
 
         TableOptions tblOptions = new TableOptions();
         TableCars tblCars = new TableCars();
 
-       // string cs = Data.GetConnectionString("OmegaWindConnectionString");
+
 
 
         protected void Page_Load(object sender, EventArgs e)
@@ -34,7 +34,7 @@ namespace OmegaC.SecurePages
 
             }
 
-          
+
         }
 
         private void RefreshGridView()
@@ -42,7 +42,7 @@ namespace OmegaC.SecurePages
             adpOptions.Fill(tblOptions);  // Fill the data table
             grdOptions.DataSource = tblOptions;
             grdOptions.DataBind();
-            
+
 
             lblMessage.Text = "Data loaded";
             lblMessage.ForeColor = Color.Yellow;
@@ -56,8 +56,7 @@ namespace OmegaC.SecurePages
 
             // Fill the data table with a row based on the optioncode
             adpOptions.FillBy(tblOptions, optionCode);
-            
-          
+
 
             // if something was fetched
             if (tblOptions.Rows.Count > 0)
@@ -66,10 +65,10 @@ namespace OmegaC.SecurePages
                 var row = tblOptions[0];
 
                 // assign the values from the row to the textboxes
-              
+
                 txtOptionCode.Text = InputData.dataInput(row.optionCode);
                 txtOptionPrice.Text = InputData.dataInput(row.optionPrice);
-                txtOptionDesc.Text = InputData.dataInput(row.OptionDesc);              
+                txtOptionDesc.Text = InputData.dataInput(row.OptionDesc);
                 ddlCarSerials.SelectedIndex = ddlCarSerials.Items.IndexOf(ddlCarSerials.Items.FindByValue(row.serial));
 
                 lblMessage.Text = "Record found";
@@ -83,83 +82,120 @@ namespace OmegaC.SecurePages
         }
 
         protected void btnInsert_Click(object sender, EventArgs e)
-        {          
-            int result = adpOptions.Insert(txtOptionCode.Text, Convert.ToDecimal(txtOptionPrice.Text), txtOptionDesc.Text, ddlCarSerials.SelectedItem.Text);
-
-
-            if (result == 1)
-            {
-                RefreshGridView();
-                lblMessage.Text = "New Option Added";
-                lblMessage.ForeColor = Color.Yellow;
-            }
-            else
-            {
-                lblMessage.Text = "New Car not Added";
-                lblMessage.ForeColor = Color.Red;
-            }
-
-          
-        }
-
-        protected void btnUpdate_Click(object sender, EventArgs e)
         {
-            string optionCode = txtOptionCode.Text;
-
-            // Fill the data table with a row based on the Optioncode
-            adpOptions.FillBy(tblOptions, optionCode);
-
-            // if something was fetched
-            if (tblOptions.Rows.Count > 0)
+            try
             {
+                int result = adpOptions.Insert(txtOptionCode.Text, Convert.ToDecimal(txtOptionPrice.Text), txtOptionDesc.Text, ddlCarSerials.SelectedItem.Text);
 
-                var row = tblOptions[0];
-                
-                row.optionCode = txtOptionCode.Text;
-                row.optionPrice = Convert.ToDecimal(txtOptionPrice.Text);
-                row.OptionDesc = txtOptionDesc.Text;                
-                row.serial = ddlCarSerials.SelectedItem.Text;
-
-                int result = adpOptions.Update(tblOptions);
 
                 if (result == 1)
                 {
                     RefreshGridView();
-                    lblMessage.Text = "Option updated";
+                    lblMessage.Text = "New Option Added";
                     lblMessage.ForeColor = Color.Yellow;
                 }
                 else
                 {
-                    lblMessage.Text = "Option not updated";
+                    lblMessage.Text = "New Car not Added";
                     lblMessage.ForeColor = Color.Red;
                 }
 
+                clearTextBox();
+
+            }
+            catch (SqlException sqlEx)
+            {
+                msgBox(sqlEx.ToString());
+            }
+            catch (Exception ex)
+            {
+
+                msgBox("Check the input");
+            }
+        }
+
+        protected void btnUpdate_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string optionCode = txtOptionCode.Text;
+
+                // Fill the data table with a row based on the Optioncode
+                adpOptions.FillBy(tblOptions, optionCode);
+
+                // if something was fetched
+                if (tblOptions.Rows.Count > 0)
+                {
+
+                    var row = tblOptions[0];
+
+                    row.optionCode = txtOptionCode.Text;
+                    row.optionPrice = Convert.ToDecimal(txtOptionPrice.Text);
+                    row.OptionDesc = txtOptionDesc.Text;
+                    row.serial = ddlCarSerials.SelectedItem.Text;
+
+                    int result = adpOptions.Update(tblOptions);
+
+                    if (result == 1)
+                    {
+                        RefreshGridView();
+                        lblMessage.Text = "Option updated";
+                        lblMessage.ForeColor = Color.Yellow;
+                    }
+                    else
+                    {
+                        lblMessage.Text = "Option not updated";
+                        lblMessage.ForeColor = Color.Red;
+                    }
+
+                }
+                clearTextBox();
+
+            }
+            catch (SqlException sqlEx)
+            {
+                msgBox(sqlEx.ToString());
+            }
+            catch (Exception ex)
+            {
+
+                msgBox("Check the input");
             }
         }
 
         protected void btnDelete_Click(object sender, EventArgs e)
         {
-            string optionCode = txtOptionCode.Text;
-
-            // Fill the data table with a row based on the Optioncode
-            adpOptions.FillBy(tblOptions, optionCode);
-
-            // if something was fetched
-            if (tblOptions.Rows.Count > 0)
+            try
             {
-                
-                RefreshGridView();
-                lblMessage.Text = "Option deleted";
-                lblMessage.ForeColor = Color.Yellow;
+                string optionCode = txtOptionCode.Text;
+
+                int result = adpOptions.Delete(optionCode);
+
+                if (result == 1)
+                {
+                    RefreshGridView();
+                    lblMessage.Text = "Record deleted";
+                    lblMessage.ForeColor = Color.Yellow;
+                }
+                else
+                {
+                    lblMessage.Text = "Record not deleted";
+                    lblMessage.ForeColor = Color.Red;
+                }
+                clearTextBox();
             }
-            else
+            catch (SqlException sqlEx)
             {
-                lblMessage.Text = "Option not deleted";
-                lblMessage.ForeColor = Color.Red;
+                msgBox(sqlEx.ToString());
+            }
+            catch (Exception ex)
+            {
+
+                msgBox("Check the input");
             }
         }
 
-     
+
 
         // load carserial data on winform from datatable
         public void loadCarSerial()
@@ -175,6 +211,23 @@ namespace OmegaC.SecurePages
 
         }
 
+
+        private void clearTextBox()
+        {
+
+            txtOptionCode.Text = string.Empty;
+            txtOptionPrice.Text = string.Empty;
+            txtOptionDesc.Text = string.Empty;
+            ddlCarSerials.SelectedValue = "-1";
+
+        }
+
+        //create by choongwon
+        public void msgBox(string msg)
+        {
+
+            Page.ClientScript.RegisterStartupScript(Page.GetType(), "Message Box", "<script language='javascript'>alert('" + msg + "')</script>");
+        }
 
     }
 }

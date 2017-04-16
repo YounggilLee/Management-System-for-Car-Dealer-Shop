@@ -8,6 +8,7 @@ using OmegaC.dsOmegaCTableAdapters;
 
 namespace OmegaC.SecurePages
 {
+    using System.Data.SqlClient;
     using System.Drawing;
     using TableCustomers = dsOmegaC.customerDataTable;
 
@@ -82,75 +83,136 @@ namespace OmegaC.SecurePages
             //int result = adpProducts.Update(tblProducts);
 
             // or, call the Insert() method on the adapter
-            int result = adpCustomers.Insert(Convert.ToDecimal(txtCustomerID.Text), txtFirstName.Text, txtLastName.Text, txtAddress.Text, Convert.ToDecimal(txtPhone.Text));
 
-
-            if (result == 1)
+            try
             {
-                RefreshGridView();
-                lblMessage.Text = "New Customer Added";
-                lblMessage.ForeColor = Color.Yellow;
+                int result = adpCustomers.Insert(Convert.ToDecimal(txtCustomerID.Text), txtFirstName.Text, txtLastName.Text, txtAddress.Text, Convert.ToDecimal(txtPhone.Text));
+
+
+                if (result == 1)
+                {
+                    RefreshGridView();
+                    lblMessage.Text = "New Customer Added";
+                    lblMessage.ForeColor = Color.Yellow;
+                }
+                else
+                {
+                    lblMessage.Text = "New Customer not Added";
+                    lblMessage.ForeColor = Color.Red;
+                }
+
+                clearTextBox();
+
             }
-            else
+            catch (SqlException sqlEx)
             {
-                lblMessage.Text = "New Customer not Added";
-                lblMessage.ForeColor = Color.Red;
+                msgBox(sqlEx.ToString());
+            }
+            catch (Exception ex)
+            {
+
+                msgBox("Check the input");
             }
         }
 
         protected void btnUpdate_Click(object sender, EventArgs e)
         {
-
-            int customerID = Convert.ToInt16(txtCustomerID.Text);
-
-            // Fill the data table with a row based on the customer ID
-            adpCustomers.FillBy(tblCustomers, customerID);
-
-            // if something was fetched
-            if (tblCustomers.Rows.Count > 0)
+            try
             {
-                // assign the row to the Row object
-                var row = tblCustomers[0];
-                row.customerID = Convert.ToDecimal(txtCustomerID.Text);
-                row.firstName = txtFirstName.Text;
-                row.lastName = txtLastName.Text;
-                row.address = txtAddress.Text;
-                row.phone = Convert.ToDecimal(txtPhone.Text);
+                int customerID = Convert.ToInt16(txtCustomerID.Text);
 
-                int result = adpCustomers.Update(tblCustomers);
+                // Fill the data table with a row based on the customer ID
+                adpCustomers.FillBy(tblCustomers, customerID);
 
-                if (result == 1)
+                // if something was fetched
+                if (tblCustomers.Rows.Count > 0)
                 {
-                    RefreshGridView();
-                    lblMessage.Text = "Customer updated";
-                    lblMessage.ForeColor = Color.Yellow;
+                    // assign the row to the Row object
+                    var row = tblCustomers[0];
+                    row.customerID = Convert.ToDecimal(txtCustomerID.Text);
+                    row.firstName = txtFirstName.Text;
+                    row.lastName = txtLastName.Text;
+                    row.address = txtAddress.Text;
+                    row.phone = Convert.ToDecimal(txtPhone.Text);
+
+                    int result = adpCustomers.Update(tblCustomers);
+
+                    if (result == 1)
+                    {
+                        RefreshGridView();
+                        lblMessage.Text = "Customer updated";
+                        lblMessage.ForeColor = Color.Yellow;
+                    }
+                    else
+                    {
+                        lblMessage.Text = "Customer not updated";
+                        lblMessage.ForeColor = Color.Red;
+                    }
                 }
-                else
-                {
-                    lblMessage.Text = "Customer not updated";
-                    lblMessage.ForeColor = Color.Red;
-                }
+
+                clearTextBox();
+
+            }
+            catch (SqlException sqlEx)
+            {
+                msgBox(sqlEx.ToString());
+            }
+            catch (Exception ex)
+            {
+
+                msgBox("Check the input");
             }
         }
 
         protected void btnDelete_Click(object sender, EventArgs e)
         {
-            int customerID = Convert.ToInt16(txtCustomerID.Text);
-
-            int result = adpCustomers.Delete(customerID);
-
-            if (result == 1)
+            try
             {
-                RefreshGridView();
-                lblMessage.Text = "Customer deleted";
-                lblMessage.ForeColor = Color.Yellow;
+                int customerID = Convert.ToInt16(txtCustomerID.Text);
+
+                int result = adpCustomers.Delete(customerID);
+
+                if (result == 1)
+                {
+                    RefreshGridView();
+                    lblMessage.Text = "Customer deleted";
+                    lblMessage.ForeColor = Color.Yellow;
+                }
+                else
+                {
+                    lblMessage.Text = "Customer not deleted";
+                    lblMessage.ForeColor = Color.Red;
+                }
+
             }
-            else
+            catch (SqlException sqlEx)
             {
-                lblMessage.Text = "Customer not deleted";
-                lblMessage.ForeColor = Color.Red;
+                msgBox(sqlEx.ToString());
+            }
+            catch (Exception ex)
+            {
+
+                msgBox("Check the input");
             }
 
         }
+
+        private void clearTextBox()
+        {
+            txtCustomerID.Text = string.Empty;
+            txtFirstName.Text = string.Empty;
+            txtLastName.Text = string.Empty;
+            txtAddress.Text = string.Empty;
+            txtPhone.Text = string.Empty;
+
+        }
+
+        //create by choongwon
+        public void msgBox(string msg)
+        {
+
+            Page.ClientScript.RegisterStartupScript(Page.GetType(), "Message Box", "<script language='javascript'>alert('" + msg + "')</script>");
+        }
+
     }
 }

@@ -27,6 +27,8 @@
                 <td colspan="2">
                     <h3 class="auto-style2">RepairService Management</h3>
                 </td>
+                <td>
+                    &nbsp;</td>
             </tr>
             <tr>
                 <td>Service&nbsp;Number:</td>
@@ -34,30 +36,41 @@
                     <asp:TextBox ID="txtServiceNumber" runat="server" Width="63px"></asp:TextBox>
                     &nbsp;<asp:Button ID="btnLoad" runat="server" OnClick="btnLoad_Click" Text="Load" BackColor="#99FF33" />
                 </td>
+                <td>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtServiceNumber" ErrorMessage="ServiceNumber is Required" ForeColor="Red"></asp:RequiredFieldValidator>
+                </td>
             </tr>
             <tr>
                 <td>Labor&nbsp; Price:</td>
                 <td>
                     <asp:TextBox ID="txtLaborPrice" runat="server"></asp:TextBox>
                 </td>
+                <td>
+                    &nbsp;</td>
             </tr>
             <tr>
                 <td>Part&nbsp; Pirce:</td>
                 <td>
                     <asp:TextBox ID="txtPartPrice" runat="server"></asp:TextBox>
                 </td>
+                <td>
+                    &nbsp;</td>
             </tr>
             <tr>
                 <td>Tax&nbsp;&nbsp;&nbsp; :</td>
                 <td>
                     <asp:TextBox ID="txtTax" runat="server"></asp:TextBox>
                 </td>
+                <td>
+                    &nbsp;</td>
             </tr>
             <tr>
                 <td>Work Detail :</td>
                 <td>
                     <asp:TextBox ID="txtWorkDetail" runat="server" Height="76px" TextMode="MultiLine" Width="173px"></asp:TextBox>
                 </td>
+                <td>
+                    &nbsp;</td>
             </tr>
             <tr>
                 <td>CustomerID :</td>
@@ -65,6 +78,8 @@
                     <asp:DropDownList ID="ddlCustomers" runat="server">
                     </asp:DropDownList>
                 </td>
+                <td>
+                    &nbsp;</td>
             </tr>
             <tr>
                 <td>Car&nbsp; Serial :</td>
@@ -72,8 +87,11 @@
                     <asp:DropDownList ID="ddlCarSerials" runat="server" AutoPostBack="True">
                     </asp:DropDownList>
                 </td>
+                <td>
+                    &nbsp;</td>
             </tr>
             <tr>
+                <td>&nbsp;</td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
             </tr>
@@ -83,15 +101,20 @@
                     &nbsp;<asp:Button ID="btnUpdate" runat="server" OnClick="btnUpdate_Click" Text="Update" BackColor="Yellow" />
                     &nbsp;<asp:Button ID="btnDelete" runat="server" OnClick="btnDelete_Click" Text="Delete" BackColor="Red" />
                 </td>
+                <td>
+                    &nbsp;</td>
             </tr>
             <tr>
                 <td>&nbsp;</td>
                 <td style="text-decoration: underline"></td>
+                <td style="text-decoration: underline">&nbsp;</td>
             </tr>
             <tr>
                 <td colspan="2">
                     <asp:Label ID="lblMessage" runat="server"></asp:Label>
                 </td>
+                <td>
+                    &nbsp;</td>
             </tr>
         </table>
         <br />
