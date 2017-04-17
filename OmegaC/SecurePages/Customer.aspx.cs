@@ -194,6 +194,7 @@ namespace OmegaC.SecurePages
 
                 msgBox("Check the input");
             }
+            clearTextBox();
 
         }
 

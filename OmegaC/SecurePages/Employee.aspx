@@ -28,8 +28,6 @@
                 <td colspan="2">
                     <h3 style="text-decoration: underline; color: #0000FF;">Employee Management</h3>
                 </td>
-                <td>
-                    &nbsp;</td>
             </tr>
             <tr>
                 <td>Employee ID:</td>
@@ -37,54 +35,39 @@
                     <asp:TextBox ID="txtEmployeeID" runat="server" Width="63px"></asp:TextBox>
                     &nbsp;<asp:Button ID="btnInsert" runat="server" OnClick="btnInsert_Click" Text="Insert" BackColor="#33CCFF" />
                 </td>
-                <td>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtEmployeeID" ErrorMessage="EmployeeID is Required" ForeColor="Red"></asp:RequiredFieldValidator>
-                </td>
             </tr>
             <tr>
                 <td>First&nbsp;Name:</td>
                 <td>
                     <asp:TextBox ID="txtFirstName" runat="server"></asp:TextBox>
                 </td>
-                <td>
-                    &nbsp;</td>
             </tr>
             <tr>
                 <td>Last&nbsp;Name:</td>
                 <td>
                     <asp:TextBox ID="txtLastName" runat="server"></asp:TextBox>
                 </td>
-                <td>
-                    &nbsp;</td>
             </tr>
             <tr>
                 <td class="auto-style2">Salary :</td>
                 <td class="auto-style2">
                     <asp:TextBox ID="txtSalary" runat="server"></asp:TextBox>
                 </td>
-                <td class="auto-style2">
-                    &nbsp;</td>
             </tr>
             <tr>
                 <td class="auto-style2">Sales :</td>
                 <td class="auto-style2">
                     <asp:TextBox ID="txtSales" runat="server"></asp:TextBox>
                 </td>
-                <td class="auto-style2">
-                    &nbsp;</td>
             </tr>
             <tr>
                 <td class="auto-style3">Commission :</td>
                 <td class="auto-style3">
                     <asp:TextBox ID="txtCommission" runat="server"></asp:TextBox>
                 </td>
-                <td class="auto-style3">
-                    &nbsp;</td>
             </tr>
             <tr>
                 <td colspan="2">
-                    &nbsp;</td>
-                <td>
                     &nbsp;</td>
             </tr>
             <tr>
@@ -92,18 +75,13 @@
                     <asp:Label ID="lblMessage0" runat="server"></asp:Label>
                 </td>
                 <td style="text-decoration: underline"></td>
-                <td style="text-decoration: underline">&nbsp;</td>
             </tr>
             <tr>
                 <td colspan="2">
                     &nbsp;</td>
-                <td>
-                    &nbsp;</td>
             </tr>
             <tr>
                 <td colspan="2">
-                    &nbsp;</td>
-                <td>
                     &nbsp;</td>
             </tr>
             <tr>
@@ -114,8 +92,6 @@
                 <td>
         <asp:Button ID="btnUndo" runat="server" OnClick="btnUndo_Click" Text="Undo" BackColor="#FF0066" CausesValidation="False" />
                 </td>
-                <td>
-                    &nbsp;</td>
             </tr>
         </table>
     
