@@ -32,10 +32,11 @@ The IDE would be Visual Studio 2015 that enables to connect to the database (ADO
 ● Repair Service Management: Repair history of each vehicle.
 --
 3. Data Designe 
-![databaseinfo](https://user-images.githubusercontent.com/20617062/31924022-7d95fee6-b84c-11e7-9799-2a41317cb3aa.png)
+![dataimg](https://user-images.githubusercontent.com/20617062/31924023-7da18c48-b84c-11e7-9484-a44522b23a3b.jpg)
+
 --
 4. Data Image
-![dataimg](https://user-images.githubusercontent.com/20617062/31924023-7da18c48-b84c-11e7-9484-a44522b23a3b.jpg)
+![databaseinfo](https://user-images.githubusercontent.com/20617062/31924022-7d95fee6-b84c-11e7-9799-2a41317cb3aa.png)
 
 # Demo
 
